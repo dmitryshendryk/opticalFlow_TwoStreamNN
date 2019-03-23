@@ -7,15 +7,10 @@ import cv2
 import os
 import copy
 import time
-import T3D
-import DataGenerator
-from settings import *
+from src.models import T3D
+from src.utils import DataGenerator
+from src.config.settings import *
 
-import argparse
-parser=argparse.ArgumentParser()
-parser.add_argument('--txt',type=str,default='./train.list')
-
-args=parser.parse_args()
 
 
 def compute_loss(logit,label):
@@ -30,11 +25,12 @@ def compute_accuracy(logit,labels):
     acc=tf.reduce_mean(tf.cast(correct,tf.float32))
     return acc
 
-def run():
+def run_train(file_path):
+	print('run_train')
 	MODEL_PATH=''
 	USE_PRETRAIN=False
 	MAX_STEPS=5000
-	dataloader=DataGenerator.DataGenerator(filename=args.txt,
+	dataloader=DataGenerator.DataGenerator(filename=file_path,
                                 batch_size=BATCH_SIZE,
                                 num_frames_per_clip=NUM_FRAMES_PER_CLIP,
                                 shuffle=False,is_da=IS_DA)
@@ -110,10 +106,6 @@ def run():
 		    
 		print('done')  
 
-if __name__=='__main__':
-	print('Preparing for training,this may take several seconds.')
-	run()        
-        
     
 
 

@@ -1,6 +1,6 @@
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
-from settings import *
+from ..config.settings import *
 
 #Define base convolution layers for 'pseudo-3d convolution'(P3D):
 def convS(_X,out_channels,kernel_size=[1,3,3],stride=1,padding='VALID'):

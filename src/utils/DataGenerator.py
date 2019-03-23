@@ -4,8 +4,8 @@ import PIL.Image as Image
 import cv2
 import os
 import time
-from DataAugmenter import DataAugmenter
-from settings import *
+from .DataAugmenter import DataAugmenter
+from ..config.settings import *
 DA=DataAugmenter()
 
 #is_da:True if using data augmentation. 
