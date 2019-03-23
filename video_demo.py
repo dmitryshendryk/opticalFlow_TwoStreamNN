@@ -54,7 +54,7 @@ with tf.Graph().as_default():
     saver.restore(sess,'./weights/T3DBN_TFCKPT_ITER_4999-4999')
     print('Start Testing.')
 
-    cap = cv2.VideoCapture(os.path.join(ROOT_DIR,'basketball.avi'))
+    cap = cv2.VideoCapture(os.path.join(ROOT_DIR,'val_dataset/videos/basketball.avi'))
     
     # def worker(input_q, output_q):
     # # Load a (frozen) Tensorflow model into memory.
@@ -108,9 +108,9 @@ with tf.Graph().as_default():
                 break
         else:
             break
-    fps.stop()
-    cap.stop()
-    # cap.release()
+    # fps.stop()
+    # cap.stop()
+    cap.release()
     cv2.destroyAllWindows()
 
             
