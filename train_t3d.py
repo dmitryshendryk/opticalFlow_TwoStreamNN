@@ -26,7 +26,6 @@ def compute_accuracy(logit,labels):
     return acc
 
 def run_train(file_path):
-	print('run_train')
 	MODEL_PATH=''
 	USE_PRETRAIN=False
 	MAX_STEPS=5000
