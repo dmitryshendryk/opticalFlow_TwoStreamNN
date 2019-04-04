@@ -30,7 +30,7 @@ import flowfilter.plot as fplot
 import flowfilter.gpu.flowfilters as gpufilter
 
 
-def main(yolo):
+def demo(yolo):
 
    # Definition of the parameters
     max_cosine_distance = 0.3
@@ -68,6 +68,7 @@ def main(yolo):
         if ret != True:
             break
         t1 = time.time()
+        frame_flow = frame.copy()
 
        # image = Image.fromarray(frame)
         image = Image.fromarray(frame[...,::-1]) #bgr to rgb
@@ -102,7 +103,7 @@ def main(yolo):
         cv2.namedWindow("Optical flow", cv2.WINDOW_NORMAL)
         cv2.namedWindow("Tracking", cv2.WINDOW_NORMAL)
         # Compute optical flow 
-        img = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        img = cv2.cvtColor(frame_flow, cv2.COLOR_BGR2GRAY)
         img = misc.imresize(img, (480, 640))
         gpuF.loadImage(img)
         gpuF.compute()
