@@ -10,6 +10,10 @@ from keras.utils import to_categorical
 import cv2
 #from keras.preprocessing import image
 
+
+ROOT_DIR = os.path.abspath('./')
+
+
 class threadsafe_iterator:
     def __init__(self, iterator):
         self.iterator = iterator
@@ -54,7 +58,7 @@ class DataSet():
     @staticmethod
     def get_data_list():
         """Load our data list from file."""
-        with open(os.path.join('/data', 'data_list.csv'), 'r') as fin:
+        with open(os.path.join(ROOT_DIR + '/dataset', 'data_list.csv'), 'r') as fin:
             reader = csv.reader(fin)
             data_list = list(reader)
 

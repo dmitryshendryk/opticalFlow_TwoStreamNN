@@ -2,8 +2,15 @@
 Train our temporal-stream CNN on optical flow frames.
 """
 from keras.callbacks import TensorBoard, ModelCheckpoint, EarlyStopping, CSVLogger, LearningRateScheduler
-from temporal_train_model import ResearchModels
-from temporal_train_data import DataSet
+import os 
+import sys 
+
+ROOT_DIR = os.path.abspath('../')
+sys.path.append(ROOT_DIR)
+
+
+from two_stream_network.temporal_train_model import ResearchModels
+from two_stream_network.temporal_train_data import DataSet
 import time
 import os.path
 from os import makedirs
@@ -117,7 +124,7 @@ def train(num_of_snip=5, opt_flow_len=10, saved_model=None,
                 workers=1,
                 use_multiprocessing=False)
 
-def main():
+def train_temporal():
     """These are the main training settings. Set each before running
     this file."""
     "=============================================================================="
@@ -137,5 +144,4 @@ def main():
             load_to_memory=load_to_memory, batch_size=batch_size,
             nb_epoch=nb_epoch, name_str=name_str)
 
-if __name__ == '__main__':
-    main()
+

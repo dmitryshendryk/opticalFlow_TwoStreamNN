@@ -1,9 +1,23 @@
 """
 Train our temporal-stream CNN on optical flow frames.
 """
+
+
+
+
 from keras.callbacks import TensorBoard, ModelCheckpoint, EarlyStopping, CSVLogger
-from spatial_train_model import get_model, freeze_all_but_top, freeze_all_but_mid_and_top
-from spatial_train_data import DataSet, get_generators
+import sys
+import os 
+
+
+
+ROOT_DIR = os.path.abspath('../')
+sys.path.append(ROOT_DIR)
+
+
+
+from two_stream_network.spatial_train_model import get_model, freeze_all_but_top, freeze_all_but_mid_and_top
+from two_stream_network.spatial_train_data import DataSet, get_generators
 import time
 import os.path
 from os import makedirs
@@ -86,7 +100,7 @@ def train(num_of_snip=5, saved_weights=None,
     model = freeze_all_but_mid_and_top(model)
     model = train_model(model, 10, generators, [tb, early_stopper, csv_logger, checkpointer])
 
-def main():
+def train_spatial():
     """These are the main training settings. Set each before running
     this file."""
     "=============================================================================="
@@ -105,5 +119,3 @@ def main():
             load_to_memory=load_to_memory, batch_size=batch_size,
             nb_epoch=nb_epoch, name_str=name_str)
 
-if __name__ == '__main__':
-    main()

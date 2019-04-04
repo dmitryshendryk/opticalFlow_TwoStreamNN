@@ -32,7 +32,7 @@ import flowfilter.gpu.flowfilters as gpufilter
 from src.dataset import DatasetOptical
 
 
-def demo(yolo):
+def demo(yolo, createDataset_flag=False):
 
     datasetOptical = DatasetOptical()
 
@@ -55,14 +55,10 @@ def demo(yolo):
 
     writeVideo_flag = False 
     
-    video_capture = cv2.VideoCapture('/home/dmitry/Documents/Projects/deep_sort_yolov3/dataset/YoutubeVid2.mp4')
+    video_capture = cv2.VideoCapture('/home/dmitry/Documents/Projects/deep_sort_yolov3/dataset/YoutubeVid1.mp4')
 
 
-    rgb = DatasetOptical()
-    optical = DatasetOptical()
-
-    rgb_frame_out = rgb.get_capture(video_capture, 'rgb_frame_out.avi')
-    optical_frame_out = rgb.get_capture(video_capture, 'optical_frame_out.avi')
+    dt = DatasetOptical()
 
     if writeVideo_flag:
     # Define the codec and create VideoWriter object
@@ -74,6 +70,7 @@ def demo(yolo):
         frame_index = -1 
         
     fps = 0.0
+    count = 0
     while True:
         ret, frame = video_capture.read()  # frame shape 640*480*3
         if ret != True:
@@ -120,12 +117,20 @@ def demo(yolo):
         gpuF.compute()
         flow = gpuF.getFlow()
 
-        rgb_frame_out.write(frame)
-        optical_frame_out.write(fplot.flowToColor(flow, 3.0))
+        # rgb_frame_out.write(frame)
+        opt_flow = fplot.flowToColor(flow, 3.0)
+        
+        # optical_frame_out.write(opt_flow)
+        # cv2.imwrite("frame%d.jpg" % count, frame)
+        # cv2.imwrite("optical_frame%d.jpg" % count, opt_flow)
 
+        if createDataset_flag:
+            dt.generate_dataset_video( 'no_accidents', frame, opt_flow, count, '0001')
+
+        
         cv2.imshow("Optical flow", fplot.flowToColor(flow, 3.0))
         cv2.imshow('Tracking', frame)
-        
+        count += 1
         if writeVideo_flag:
             # save a frame
             out.write(frame)
@@ -144,8 +149,8 @@ def demo(yolo):
             break
 
     video_capture.release()
-    rgb_frame_out.release()
-    optical_frame_out.release()
+    # rgb_frame_out.release()
+    # optical_frame_out.release()
     
     if writeVideo_flag:
         out.release()
