@@ -29,8 +29,12 @@ sys.path.append(ROOT_DIR)
 import flowfilter.plot as fplot
 import flowfilter.gpu.flowfilters as gpufilter
 
+from src.dataset import DatasetOptical
+
 
 def demo(yolo):
+
+    datasetOptical = DatasetOptical()
 
    # Definition of the parameters
     max_cosine_distance = 0.3
@@ -52,6 +56,13 @@ def demo(yolo):
     writeVideo_flag = False 
     
     video_capture = cv2.VideoCapture('/home/dmitry/Documents/Projects/deep_sort_yolov3/dataset/YoutubeVid2.mp4')
+
+
+    rgb = DatasetOptical()
+    optical = DatasetOptical()
+
+    rgb_frame_out = rgb.get_capture(video_capture, 'rgb_frame_out.avi')
+    optical_frame_out = rgb.get_capture(video_capture, 'optical_frame_out.avi')
 
     if writeVideo_flag:
     # Define the codec and create VideoWriter object
@@ -109,6 +120,8 @@ def demo(yolo):
         gpuF.compute()
         flow = gpuF.getFlow()
 
+        rgb_frame_out.write(frame)
+        optical_frame_out.write(fplot.flowToColor(flow, 3.0))
 
         cv2.imshow("Optical flow", fplot.flowToColor(flow, 3.0))
         cv2.imshow('Tracking', frame)
@@ -131,6 +144,9 @@ def demo(yolo):
             break
 
     video_capture.release()
+    rgb_frame_out.release()
+    optical_frame_out.release()
+    
     if writeVideo_flag:
         out.release()
         list_file.close()
