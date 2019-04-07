@@ -44,7 +44,7 @@ class DataSet():
         self.class_limit = class_limit
         self.image_shape = image_shape
         self.original_image_shape = original_image_shape
-        self.opt_flow_path = os.path.join('/data', 'opt_flow')
+        self.opt_flow_path = os.path.join('/dataset', 'opt_flow')
 
         # Get the data.
         self.data_list = self.get_data_list()
@@ -58,7 +58,7 @@ class DataSet():
     @staticmethod
     def get_data_list():
         """Load our data list from file."""
-        with open(os.path.join(ROOT_DIR + '/dataset', 'data_list.csv'), 'r') as fin:
+        with open(os.path.join(ROOT_DIR + '/dataset', 'data_list_1.csv'), 'r') as fin:
             reader = csv.reader(fin)
             data_list = list(reader)
 
@@ -125,14 +125,14 @@ class DataSet():
 
         idx = 0
 
-        print("\nCreating %s generator with %d samples.\n" % (train_test,
-            len(data_list)))
+ #       print("\nCreating %s generator with %d samples.\n" % (train_test,
+#            len(data_list)))
 
         while 1:
             idx += 1
-            print("Generator yielding batch No.%d" % idx)
-            if(train_test == 'test'):
-                print("Validating for job: %s" % name_str)
+    #        print("Generator yielding batch No.%d" % idx)
+  #          if(train_test == 'test'):
+   #             print("Validating for job: %s" % name_str)
             X, y = [], []
 
             # Generate batch_size samples.
@@ -180,7 +180,9 @@ class DataSet():
         bottom = top + self.image_shape[1]
 
         # temporal parameters
-        total_frames = len(os.listdir(opt_flow_dir_x))
+        opt_flow_dir_x = ROOT_DIR + opt_flow_dir_x
+        opt_flow_dir_y = ROOT_DIR + opt_flow_dir_y
+        total_frames = len(os.listdir(os.path.join(ROOT_DIR, opt_flow_dir_x)))
         win_len = (total_frames - self.opt_flow_len) // self.num_of_snip # starting frame selection window length
         if train_test == 'train':
             start_frame = int(random.random() * win_len) + 1
@@ -201,21 +203,20 @@ class DataSet():
             # horizontal components
             img = None # reset to be safe
             img = cv2.imread(opt_flow_dir_x + '/frame' + "%06d"%(i_frame) + '.jpg', 0)
-            print(opt_flow_dir_x + '/frame' + "%06d"%(i_frame) + '.jpg')
+            #print(opt_flow_dir_x + '/frame' + "%06d"%(i_frame) + '.jpg')
             img = np.array(img)
             # mean substraction 
             img = img - np.mean(img)
-            if train_test == 'train' or val_aug == 'center':
+            #if train_test == 'train' or val_aug == 'center':
                 # crop
-                img = img[left : right, top : bottom]
-            else:
+            #    img = img[left : right, top : bottom]
+            #else:
                 #resize
-                img = cv2.resize(img, self.image_shape)
+            img = cv2.resize(img, self.image_shape)
             img = img / 255. # normalize pixels 
             if flip:
                 img = -img
             opt_flow_stack.append(img)
-
             # vertical components
             img2 = None # reset to be safe
             img2 = cv2.imread(opt_flow_dir_y + '/frame' + "%06d"%(i_frame) + '.jpg', 0)
@@ -223,15 +224,14 @@ class DataSet():
             img2 = np.array(img2)
             img2 = np.swapaxes(img2, 0, 1)
             img2 = img2 - np.mean(img2)
-            if train_test == 'train' or val_aug == 'center':
+            #if train_test == 'train' or val_aug == 'center':
                 # crop
-                img2 = img2[left : right, top : bottom]
-            else:
+            #    img2 = img2[left : right, top : bottom]
+            #else:
                 #resize
-                img2 = cv2.resize(img2, self.image_shape)
+            img2 = cv2.resize(img2, self.image_shape)
             img2 = img2 / 255. # normalize pixels 
             opt_flow_stack.append(img2)
-
         opt_flow_stack = np.array(opt_flow_stack)
         opt_flow_stack = np.swapaxes(opt_flow_stack, 0, 1)
         opt_flow_stack = np.swapaxes(opt_flow_stack, 1, 2)

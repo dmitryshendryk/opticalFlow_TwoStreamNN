@@ -38,7 +38,7 @@ class DataSet():
     @staticmethod
     def get_data_list():
         """Load our data list from file."""
-        with open(os.path.join(ROOT_DIR + '/dataset', 'data_list.csv'), 'r') as fin:
+        with open(os.path.join(ROOT_DIR + '/dataset', 'data_list_1.csv'), 'r') as fin:
             reader = csv.reader(fin)
             data_list = list(reader)
 

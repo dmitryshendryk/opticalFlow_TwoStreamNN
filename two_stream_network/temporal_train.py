@@ -64,7 +64,7 @@ def train(num_of_snip=5, opt_flow_len=10, saved_model=None,
             str(timestamp) + '.log'))
 
     # Learning rate schedule.
-    lr_schedule = LearningRateScheduler(fixed_schedule, verbose=0)
+    lr_schedule = LearningRateScheduler(fixed_schedule, verbose=1)
 
     print("class_limit = ", class_limit)
     # Get the data and process it.
