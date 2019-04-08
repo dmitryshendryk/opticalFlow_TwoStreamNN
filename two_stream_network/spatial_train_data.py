@@ -73,7 +73,7 @@ class DataSet():
         """Given a class as a string, return its number in the classes
         list. This lets us encode and one-hot it for training."""
 
-        # Encode it first.
+        # Encode it first.Ï
         label_encoded = self.classes.index(class_str)
 
         # Now one-hot it.

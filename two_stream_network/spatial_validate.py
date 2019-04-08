@@ -1,8 +1,16 @@
 """
 Train our temporal-stream CNN on optical flow frames.
 """
-from spatial_validate_model import ResearchModels
-from spatial_validate_data import DataSet, keras_validation_generator
+
+import os 
+
+import sys
+
+ROOT_DIR = os.path.abspath('../')
+sys.path.append(ROOT_DIR)
+
+from two_stream_network.spatial_validate_model import ResearchModels
+from two_stream_network.spatial_validate_data import DataSet
 import time
 import os.path
 from os import makedirs
@@ -29,19 +37,17 @@ def test_1epoch(class_limit=None, n_snip=5, opt_flow_len=10, image_shape=(224, 2
     spatial_cnn.model.fit_generator(generator=val_generator, steps_per_epoch=steps, max_queue_size=1)
     print('Finished validation of weights:', saved_weights)
 
-def main():
+def spatial_validate(spatial_weights, class_limit):
 
     """These are the main training settings. Set each before running this file."""
     "=============================================================================="
-    saved_weights = None # weights file
-    class_limit = None  # int, can be 1-101 or None
+    saved_weights = spatial_weights # weights file
+    class_limit = class_limit  # int, can be 1-101 or None
     n_snip = 1 # number of chunks from each video used for testing
     opt_flow_len = 10 # number of optical flow frames used
     image_shape = (224, 224)
-    batch_size = 1024
+    batch_size = 10
     "=============================================================================="
 
     test_1epoch(class_limit=class_limit, n_snip=n_snip, opt_flow_len=opt_flow_len, image_shape=image_shape, batch_size=batch_size, saved_weights=saved_weights)
 
-if __name__ == '__main__':
-    main()

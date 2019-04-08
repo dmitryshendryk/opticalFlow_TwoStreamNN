@@ -10,6 +10,10 @@ from keras.utils import to_categorical
 from keras.preprocessing.image import ImageDataGenerator
 import cv2
 
+import os 
+
+ROOT_DIR = os.path.abspath('./')
+
 class DataSet():
     def __init__(self, class_limit=None, image_shape=(224, 224), original_image_shape=(341, 256), n_snip=5, opt_flow_len=10, batch_size=16):
         """Constructor.
@@ -24,8 +28,8 @@ class DataSet():
         self.opt_flow_len = opt_flow_len
         self.batch_size = batch_size
 
-        self.static_frame_path = os.path.join('/data', 'test')
-        self.opt_flow_path = os.path.join('/data', 'opt_flow')
+        self.static_frame_path = os.path.join(ROOT_DIR + '/dataset', 'test')
+        self.opt_flow_path = os.path.join(ROOT_DIR +'/dataset', 'opt_flow')
 
         # Get the data.
         self.data_list = self.get_data_list()
@@ -46,7 +50,7 @@ class DataSet():
     @staticmethod
     def get_data_list():
         """Load our data list from file."""
-        with open(os.path.join('/data', 'data_list.csv'), 'r') as fin:
+        with open(os.path.join(ROOT_DIR +'/dataset', 'data_list_1.csv'), 'r') as fin:
             reader = csv.reader(fin)
             data_list = list(reader)
 
@@ -160,7 +164,7 @@ class DataSet():
                 start_frame = int(0.5 * start_frame_window_len + 0.5) + start_frame_window_len * i_snip
 
             # Get the static frame
-            static_frame = cv2.imread(static_frame_dir + '-%04d' % start_frame + '.jpg')
+            static_frame = cv2.imread(static_frame_dir + '/%05d' % start_frame + '.jpg')
             static_frame = static_frame * 1.0 / 255.0
             static_frame = cv2.resize(static_frame, self.image_shape)
 

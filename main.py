@@ -4,7 +4,9 @@ from video import demo
 from yolo import YOLO
 from two_stream_network.spatial_train import train_spatial
 from two_stream_network.temporal_train import train_temporal 
+from two_stream_network.spatial_validate import spatial_validate
 from two_stream_network.fuse_validate import fuse_train
+from two_stream_network.temporal_validate import validate_temporal
 
 
 if __name__ == '__main__':
@@ -26,6 +28,12 @@ if __name__ == '__main__':
 
     if args.command == 'train_spatial':
         train_spatial()
+    
+    if args.command == 'validate_spatial':
+        spatial_validate(args.spatial, 2)
+    
+    if args.command == 'validate_temporal':
+        validate_temporal(args.temporal, 2)
     
     if args.command == 'train_temporal':
         train_temporal() 

@@ -2,8 +2,16 @@
 Train our temporal-stream CNN on optical flow frames.
 """
 from keras.callbacks import TensorBoard, ModelCheckpoint, EarlyStopping, CSVLogger
-from fuse_validate_model import ResearchModels
-from fuse_validate_data import DataSet
+
+import os 
+import sys
+
+
+ROOT_DIR = os.path.abspath('../')
+sys.path.append(ROOT_DIR)
+
+from two_stream_network.fuse_validate_model import ResearchModels
+from two_stream_network.fuse_validate_data import DataSet
 import time
 import os.path
 from os import makedirs
@@ -40,18 +48,18 @@ def test_1epoch_fuse(
     # Evaluate!
     two_stream_fuse.model.fit_generator(generator=val_generator, steps_per_epoch=steps, max_queue_size=1)
 
-def main():
+def fuse_train(saved_spatial_weights,saved_temporal_weights):
     """These are the main training settings. Set each before running
     this file."""
     "=============================================================================="
-    saved_spatial_weights = ''
-    saved_temporal_weights = ''
+    saved_spatial_weights = saved_spatial_weights
+    saved_temporal_weights = saved_temporal_weights
     class_limit = None 
-    n_snip = 19 # number of chunks used for each video
+    n_snip = 1 # number of chunks used for each video
     opt_flow_len = 10 # number of optical flow frames used
     image_shape=(224, 224)
     original_image_shape=(341, 256)
-    batch_size = 256
+    batch_size = 10
     fuse_method = 'average'
     "=============================================================================="
 
