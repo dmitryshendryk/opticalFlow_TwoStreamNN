@@ -90,7 +90,7 @@ namespace pre_process
 
         void convertFlowToImage(const Mat &flowIn, Mat &flowOut,
 		                float lowerBound, float higherBound);
-        void compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
+        int compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
                         String vid_path, String out_path, String out_path_jpeg);
     };
 }

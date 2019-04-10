@@ -18,7 +18,7 @@ namespace pre_process
 	}
 	#undef CAST
 }
-    void OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
+    int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
                         String vid_path, String out_path, String out_path_jpeg) 
     {
     
