@@ -7,6 +7,17 @@ namespace pre_process
     OpticalFlow::OpticalFlow() {}
     OpticalFlow::~OpticalFlow() {}
 
+    void OpticalFlow::convertFlowToImage(const Mat &flowIn, Mat &flowOut,
+		float lowerBound, float higherBound) {
+	#define CAST(v, L, H) ((v) > (H) ? 255 : (v) < (L) ? 0 : cvRound(255*((v) - (L))/((H)-(L))))
+	for (int i = 0; i < flowIn.rows; ++i) {
+		for (int j = 0; j < flowIn.cols; ++j) {
+			float x = flowIn.at<float>(i,j);
+			flowOut.at<uchar>(i,j) = CAST(x, lowerBound, higherBound);
+		}
+	}
+	#undef CAST
+}
     void OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
                         String vid_path, String out_path, String out_path_jpeg) 
     {

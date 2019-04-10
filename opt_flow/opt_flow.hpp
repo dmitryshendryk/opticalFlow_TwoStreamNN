@@ -66,6 +66,8 @@ namespace pre_process
     const int RESIZE_HEIGHT = 224;
     const bool warp = false;
 
+    int vidcount = 0;
+
     class OpticalFlow 
     {
 
@@ -85,6 +87,9 @@ namespace pre_process
 
         OpticalFlow();
         ~OpticalFlow();
+
+        void convertFlowToImage(const Mat &flowIn, Mat &flowOut,
+		                float lowerBound, float higherBound);
         void compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
                         String vid_path, String out_path, String out_path_jpeg);
     };
