@@ -1,3 +1,7 @@
+
+#ifndef GRANDPARENT_H
+#define GRANDPARENT_H
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -88,3 +92,5 @@ namespace pre_process
                         String vid_path, String out_path, String out_path_jpeg);
     };
 }
+
+#endif
