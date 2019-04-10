@@ -7,7 +7,7 @@ namespace pre_process
     OpticalFlow::OpticalFlow() {}
     OpticalFlow::~OpticalFlow() {}
 
-    OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
+    void OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
                         String vid_path, String out_path, String out_path_jpeg) 
     {
     
