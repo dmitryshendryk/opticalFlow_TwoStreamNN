@@ -67,24 +67,24 @@ namespace pre_process
 
     class OpticalFlow 
     {
+        public:
+            GpuMat frame0GPU, frame1GPU, flowGPU;
+            Mat frame0_rgb_, frame1_rgb_, frame0_rgb, frame1_rgb, frame0, frame1, rgb_out;
+            Mat frame0_32, frame1_32, imgU, imgV;
+            Mat motion_flow, flow_rgb;
+            Mat flowCPU, planes[3], mag;
+            char cad[N_CHAR];
+            struct timeval tod1;
+            double t1 = 0.0, t2 = 0.0, tdflow = 0.0, t1fr = 0.0, t2fr = 0.0, tdframe = 0.0;
 
-        GpuMat frame0GPU, frame1GPU, flowGPU;
-        Mat frame0_rgb_, frame1_rgb_, frame0_rgb, frame1_rgb, frame0, frame1, rgb_out;
-        Mat frame0_32, frame1_32, imgU, imgV;
-        Mat motion_flow, flow_rgb;
-        Mat flowCPU, planes[3], mag;
-        char cad[N_CHAR];
-        struct timeval tod1;
-        double t1 = 0.0, t2 = 0.0, tdflow = 0.0, t1fr = 0.0, t2fr = 0.0, tdframe = 0.0;
 
 
+            OpticalFlow();
+            ~OpticalFlow();
 
-        OpticalFlow();
-        ~OpticalFlow();
-
-        void convertFlowToImage(const Mat &flowIn, Mat &flowOut,
+            void convertFlowToImage(const Mat &flowIn, Mat &flowOut,
 		                float lowerBound, float higherBound);
-        int compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
+            int compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
                         String vid_path, String out_path, String out_path_jpeg);
     };
 }
