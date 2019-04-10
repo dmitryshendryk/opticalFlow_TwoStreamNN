@@ -38,36 +38,7 @@ using namespace cv::cuda;
 namespace pre_process 
 {
 
-    float MIN_SZ = 256;
-    float OUT_SZ = 256;
-
-    bool clipFlow = true; // clips flow to [-20 20]
-    bool resize_img = false;
-
-    // These are default paths
-
    
-    bool createOutDirs = true;
-
-    /* THESE ARE MY PARAMS, NOT FEICHENHOFER'S */
-
-    bool debug = false;
-    bool rgb = false;
-    bool bins = false;
-
-    // Global variables for cuda::BroxOpticalFlow
-    const float alpha_ = 0.197;
-    const float gamma_ = 50;
-    const float scale_factor_ = 0.8;
-    const int inner_iterations_ = 10;
-    const int outer_iterations_ = 77;
-    const int solver_iterations_ = 10;
-
-    const int RESIZE_WIDTH = 224;
-    const int RESIZE_HEIGHT = 224;
-    const bool warp = false;
-
-    int vidcount = 0;
 
     class OpticalFlow 
     {
