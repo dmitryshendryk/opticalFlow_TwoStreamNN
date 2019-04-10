@@ -1,6 +1,5 @@
-#include<iostream>
 #include "opt_flow.hpp"
-using namespace std;
+
 int main(int argc, char *argv[] )
 {
 
