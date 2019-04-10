@@ -24,8 +24,7 @@
 
 #include <dirent.h>
 
-#define N_CHAR 500
-#define WRITEOUT_IMGS 1
+
 
 using namespace std;
 using namespace cv;

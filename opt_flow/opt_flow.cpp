@@ -1,5 +1,8 @@
 #include "opt_flow.hpp"
 
+#define N_CHAR 500
+#define WRITEOUT_IMGS 1
+
 namespace pre_process 
 {
     OpticalFlow::OpticalFlow() {}
