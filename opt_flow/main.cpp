@@ -45,7 +45,7 @@ int main(int argc, char *argv[] )
 	}
 
     pre_process::OpticalFlow opt_flow;
-    opt_flow.compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
-                        String vid_path, String out_path, String out_path_jpeg);
+    opt_flow.compute_Flow(start_with_vid,  gpuID,  type,  frameSkip,
+                         vid_path,  out_path,  out_path_jpeg);
     return 0;
 }
