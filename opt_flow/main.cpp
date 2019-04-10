@@ -13,6 +13,16 @@ int main(int argc, char *argv[] )
 				"{ vid_path       |  ./   | path input (where the videos are)}"
 				"{ out_path       |  ./   | path output          }";
 
+    int start_with_vid = 1;
+    int gpuID = 0;
+    int type = 1;
+    int frameSkip = 1;
+
+    std::string vid_path = "/home/katou2/github-home/gpu_flow/build/test";
+    std::string out_path	= "/home/katou2/github-home/gpu_flow/build/test_out";
+    std::string out_path_jpeg	= "/home/katou2/github-home/gpu_flow/build/test_out";
+
+    
     CommandLineParser parser(argc, argv, keys);
 
 	if (parser.get<bool>("help"))

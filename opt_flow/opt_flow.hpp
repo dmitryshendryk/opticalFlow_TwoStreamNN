@@ -42,10 +42,7 @@ namespace pre_process
 
     // These are default paths
 
-    std::string vid_path = "/home/katou2/github-home/gpu_flow/build/test";
-    std::string out_path	= "/home/katou2/github-home/gpu_flow/build/test_out";
-    std::string out_path_jpeg	= "/home/katou2/github-home/gpu_flow/build/test_out";
-
+   
     bool createOutDirs = true;
 
     /* THESE ARE MY PARAMS, NOT FEICHENHOFER'S */
@@ -80,10 +77,7 @@ namespace pre_process
         struct timeval tod1;
         double t1 = 0.0, t2 = 0.0, tdflow = 0.0, t1fr = 0.0, t2fr = 0.0, tdframe = 0.0;
 
-        int start_with_vid = 1;
-        int gpuID = 0;
-        int type = 1;
-        int frameSkip = 1;
+
 
         OpticalFlow();
         ~OpticalFlow();
