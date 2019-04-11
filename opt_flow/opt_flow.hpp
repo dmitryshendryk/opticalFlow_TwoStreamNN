@@ -15,9 +15,9 @@
 #include <time.h>
 #include <sstream>
 
-// #include <QDirIterator>
-// #include <QFileInfo>
-// #include <QString>
+#include <QDirIterator>
+#include <QFileInfo>
+#include <QString>
 
 #include <opencv2/core/core.hpp>
 #include "opencv2/video/tracking.hpp"
