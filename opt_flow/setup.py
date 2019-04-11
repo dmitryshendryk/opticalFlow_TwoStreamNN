@@ -5,10 +5,12 @@ from Cython.Distutils import build_ext
 import numpy as np
 
 incDirs = ['/usr/local/include',
+           '/home/dmitry/Qt/5.9/gcc_64/include',
            '/usr/local/cuda/include',
+
            np.get_include()]
 
-libDirs = ['/usr/local/lib']
+libDirs = ['/usr/local/lib', '/home/dmitry/Qt/5.9/gcc_64/lib']
 
 setup(ext_modules=[Extension("optical_flow_wrapper", 
                              ["optical_flow_wrapper.pyx", 
