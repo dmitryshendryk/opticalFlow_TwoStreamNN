@@ -4,7 +4,7 @@ cdef extern from "opt_flow.hpp" namespace "pre_process":
         OpticalFlow();
         
         int compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
-                        String vid_path, String out_path, String out_path_jpeg);
+                        str vid_path, str out_path, str out_path_jpeg);
     cdef cppclass GpuMat:
         GpuMat frame0GPU, frame1GPU, flowGPU;
     
