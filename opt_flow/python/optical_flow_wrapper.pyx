@@ -2,6 +2,9 @@
 cdef extern from "opt_flow.hpp" namespace "pre_process":
     cdef cppclass OpticalFlow:
         OpticalFlow();
+        
+        int compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
+                        String vid_path, String out_path, String out_path_jpeg);
     cdef cppclass GpuMat:
         GpuMat frame0GPU, frame1GPU, flowGPU;
     
@@ -10,11 +13,11 @@ cdef extern from "opt_flow.hpp" namespace "pre_process":
         Mat frame0_32, frame1_32, imgU, imgV;
         Mat motion_flow, flow_rgb;
         Mat flowCPU, planes[3], mag;
-        char cad[N_CHAR];
-        double t1 = 0.0, t2 = 0.0, tdflow = 0.0, t1fr = 0.0, t2fr = 0.0, tdframe = 0.0;
+    
+    char cad[500];
+    double t1 = 0.0, t2 = 0.0, tdflow = 0.0, t1fr = 0.0, t2fr = 0.0, tdframe = 0.0;
 
-        int compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
-                        String vid_path, String out_path, String out_path_jpeg);
+    
 
 
 cdef class PyOpticalFlow:
