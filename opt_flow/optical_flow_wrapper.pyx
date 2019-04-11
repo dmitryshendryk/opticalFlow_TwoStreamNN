@@ -1,10 +1,14 @@
 
+from libcpp cimport string
+from libcpp cimport char
+from libcpp cimport double
+
 cdef extern from "opt_flow.hpp" namespace "pre_process":
     cdef cppclass OpticalFlow:
         OpticalFlow();
         
         int compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
-                        str vid_path, str out_path, str out_path_jpeg);
+                        string vid_path, string out_path, string out_path_jpeg);
     cdef cppclass GpuMat:
         GpuMat frame0GPU, frame1GPU, flowGPU;
     
