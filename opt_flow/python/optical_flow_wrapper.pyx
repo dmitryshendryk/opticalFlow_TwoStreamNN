@@ -1,7 +1,7 @@
 
 from libcpp.string cimport string
 
-cdef extern from "opt_flow.hpp" namespace "pre_process":
+cdef extern from "../opt_flow.hpp" namespace "pre_process":
     cdef cppclass OpticalFlow:
         OpticalFlow();
         
