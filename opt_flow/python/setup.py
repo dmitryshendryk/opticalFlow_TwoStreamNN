@@ -16,7 +16,7 @@ cflags = ['-std=c++11']
 
 setup(ext_modules=[Extension("optical_flow_wrapper", 
                              ["optical_flow_wrapper.pyx", 
-                              "opt_flow.cpp"], 
+                              "../opt_flow.cpp"], 
                               include_dirs=incDirs,
                               library_dirs=libDirs,
                               language="c++",
