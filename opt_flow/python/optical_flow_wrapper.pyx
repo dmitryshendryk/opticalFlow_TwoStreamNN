@@ -23,8 +23,6 @@ cdef class PyOpticalFlow:
     def __cinit__(self):
         self.thisptr = new OpticalFlow();
     
-    def compute_Flow(self, start_with_vid, gpuID, type, frameSkip,
-                    String vid_path, String out_path, String out_path_jpeg):
-        return self.thisptr.compute_Flow(start_with_vid, gpuID, type, frameSkip,
-                    String vid_path, String out_path, String out_path_jpeg)
+    def compute_Flow(self, start_with_vid, gpuID, type, frameSkip, vid_path,  out_path,  out_path_jpeg):
+        return self.thisptr.compute_Flow(start_with_vid, gpuID, type, frameSkip, vid_path,  out_path,  out_path_jpeg)
     
