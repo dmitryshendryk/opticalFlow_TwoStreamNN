@@ -10,12 +10,10 @@ import sysconfig
 
 
 incDirs = ['/usr/local/include',
-           '/home/dmitry/Qt/5.9/gcc_64/include',
            '/usr/local/cuda/include',
-
            np.get_include()]
 
-libDirs = ['/usr/local/lib', '/home/dmitry/Qt/5.9/gcc_64/lib']
+libDirs = ['/usr/local/lib']
 
 cflags = ['-std=c++11']
 
@@ -46,7 +44,7 @@ class BuildExtWithoutPlatformSuffix(build_ext):
 
 setup(ext_modules=[Extension(name="cOptical", 
                              sources=["optical_flow_wrapper.pyx", 
-                              "../opt_flow.cpp"], 
+                              "../opt_flow_img.cpp"], 
                               include_dirs=incDirs,
                               library_dirs=libDirs,
                               language="c++",
