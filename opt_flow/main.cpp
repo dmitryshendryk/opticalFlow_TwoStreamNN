@@ -17,9 +17,9 @@ int main(int argc, char *argv[] )
     int type = 1;
     int frameSkip = 1;
 
-    std::string vid_path = "/home/katou2/github-home/gpu_flow/build/test";
-    std::string out_path	= "/home/katou2/github-home/gpu_flow/build/test_out";
-    std::string out_path_jpeg	= "/home/katou2/github-home/gpu_flow/build/test_out";
+	std::string vid_path = "/home/katou2/github-home/gpu_flow/build/test";
+	std::string out_path	= "/home/katou2/github-home/gpu_flow/build/test_out";
+	std::string out_path_jpeg	= "/home/katou2/github-home/gpu_flow/build/test_out";
 
     
     CommandLineParser parser(argc, argv, keys);
