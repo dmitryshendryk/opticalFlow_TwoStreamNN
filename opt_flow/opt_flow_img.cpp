@@ -169,7 +169,7 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
         // VideoCapture cap;
         try
         {
-            cap.open(video);
+            cap.open(vid_path);
         }
         catch (std::exception &e)
         {
@@ -229,8 +229,9 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
 
         // outfile_u = out_folder_u.toStdString();
         // outfile_v = out_folder_v.toStdString();
-        outfile_u = '/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output_x';
-        outfile_v = '/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output_y';
+        outfile_u = "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output_x/";
+        outfile_v = "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output_y/";
+        std::cout << "outfile_u11111:" << outfile_u  << std::endl;
         // outfile_flow  = out_folder_flow.toStdString();
 
         while (frame1.empty() == false)
@@ -325,6 +326,8 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
 
                 imwrite(outfile_u + cad, img_u);
                 imwrite(outfile_v + cad, img_v);
+                std::cout << "outfile_u:" << outfile_u  << std::endl;
+                std::cout << "outfile_v:" << outfile_v  << std::endl;
                 //imwrite(outfile_flow+cad, optflow);
 
                 if (bins == true)
@@ -336,7 +339,7 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
                 }
             }
 
-            sprintf(cad, "/frame%06d.jpg", nframes + 1);
+            sprintf(cad, "/my_frames_frame%06d.jpg", nframes + 1);
             if (rgb)
             {
                 if (resize_img == true)
