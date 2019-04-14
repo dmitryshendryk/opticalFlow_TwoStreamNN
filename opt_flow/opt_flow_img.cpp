@@ -85,8 +85,8 @@ namespace pre_process
 	int vidID = 0;
 	std::string video, outfile_u, outfile_v, outfile_flow, outfile_jpeg;
 
-	// for (; (dirIt.hasNext()); )
-	// {
+	 while (1 )
+	{
 		//std::cout << "asdf "<< std::endl;
 		// dirIt.next();
 		// QString file = dirIt.fileName();
@@ -235,8 +235,8 @@ namespace pre_process
 
         // outfile_u = out_folder_u.toStdString();
         // outfile_v = out_folder_v.toStdString();
-        outfile_u = '/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output_x'
-        outfile_v = '/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output_y'
+        outfile_u = '/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output_x';
+        outfile_v = '/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output_y';
         // outfile_flow  = out_folder_flow.toStdString();
 
         while( frame1.empty() == false )
@@ -338,10 +338,10 @@ namespace pre_process
                 //imwrite(outfile_flow+cad, optflow);
 
                 if (bins == true){
-                    fwrite(&min_u_f,sizeof(float),1,fx);
-                    fwrite(&max_u_f,sizeof(float),1,fx);
-                    fwrite(&min_v_f,sizeof(float),1,fx);
-                    fwrite(&max_v_f,sizeof(float),1,fx);
+                  //  fwrite(&min_u_f,sizeof(float),1,fx);
+                   // fwrite(&max_u_f,sizeof(float),1,fx);
+                   // fwrite(&min_v_f,sizeof(float),1,fx);
+                   // fwrite(&max_v_f,sizeof(float),1,fx);
                 }
             }
 
@@ -390,15 +390,15 @@ namespace pre_process
             if(debug){
                 t2fr = tod1.tv_sec + tod1.tv_usec / 1000000.0;
                 tdframe = 1000.0*(t2fr-t1fr);
-                cout << "Processing video" << fName << "ID="<< vidID <<  " Frame Number: " << nframes << endl;
+              //  cout << "Processing video" << fName << "ID="<< vidID <<  " Frame Number: " << nframes << endl;
                 cout << "Time type=" << type <<  " Flow: " << tdflow << " ms" << endl;
                 cout << "Time All: " << tdframe << " ms" <<  endl;
             }
 
         }
         if (bins == true){
-            fclose(fx);
+//            fclose(fx);
         }
-		// }
+	 }
     }
-}
+    }
