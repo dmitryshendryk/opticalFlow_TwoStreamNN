@@ -5,7 +5,7 @@ cdef extern from "<opencv2/videoio/videoio.hpp>" namespace "cv":
     cdef cppclass VideoCapture: 
         pass 
 
-cdef extern from "../opt_flow.hpp" namespace "pre_process":
+cdef extern from "../opt_flow_img.hpp" namespace "pre_process":
     cdef cppclass OpticalFlow:
         OpticalFlow();
 
