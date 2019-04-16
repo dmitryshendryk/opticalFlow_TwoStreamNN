@@ -15,9 +15,9 @@
 #include <time.h>
 #include <sstream>
 
-#include <QtCore/QDirIterator>
-#include <QtCore/QFileInfo>
-#include <QtCore/QString>
+// #include <QtCore/QDirIterator>
+// #include <QtCore/QFileInfo>
+// #include <QtCore/QString>
 
 #include <opencv2/core/core.hpp>
 #include "opencv2/video/tracking.hpp"
@@ -35,11 +35,10 @@ using namespace std;
 using namespace cv;
 using namespace cv::cuda;
 
-namespace pre_process 
-{
 
    
-
+namespace pre_process 
+{
     class OpticalFlow 
     {
         public:
@@ -58,10 +57,9 @@ namespace pre_process
             ~OpticalFlow();
 
             void convertFlowToImage(const Mat &flowIn, Mat &flowOut,
-		                float lowerBound, float higherBound);
+                        float lowerBound, float higherBound);
             int compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
                         std::string vid_path, std::string out_path, std::string out_path_jpeg);
     };
 }
-
 #endif

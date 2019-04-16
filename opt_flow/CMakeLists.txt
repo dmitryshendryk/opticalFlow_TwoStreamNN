@@ -23,7 +23,8 @@ cmake_minimum_required(VERSION 2.4)
   set(CMAKE_CXX_FLAGS "${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
 
 # OpenCV Config
-SET(OpenCV_DIR "/home/pedro/opencv-2.4.13.6/build")
+# SET(OpenCV_DIR "/home/pedro/opencv-2.4.13.6/build")
+set( BOOST_PYTHONLIB python-py35 )
 find_package( OpenCV REQUIRED )
 set(OpenCV_FOUND 1)
 message(STATUS "    version: ${OpenCV_VERSION}")
@@ -40,7 +41,7 @@ if(COMMAND cmake_policy)
    cmake_policy(SET CMP0003 NEW)
 endif(COMMAND cmake_policy)
 
-################################
+
 
 option(WARP ON)
 if(WARP)
@@ -59,8 +60,8 @@ if(WARP)
 else()
     ADD_EXECUTABLE(
       compute_flow
-      opt_flow.cpp
-      main.cpp
+      opt_flow_img.cpp
+      main_img.cpp
       ${SRCS}
     )
 
@@ -78,4 +79,3 @@ foreach(dir ${DIRS})
   LIST(APPEND h_files ${files})
 endforeach(dir)
 add_custom_target(TAGS etags --members -l c++ ${h_files} ${SRCS})
-add_library(${PROJECT_NAME} SHARED ${SOURCES})

@@ -1,6 +1,5 @@
 from distutils.core import setup
 from distutils.extension import Extension
-from Cython.Distutils import build_ext
 
 import numpy as np
 
@@ -18,35 +17,14 @@ libDirs = ['/usr/local/lib']
 cflags = ['-std=c++11']
 
 
-def get_ext_filename_without_platform_suffix(filename):
-    name, ext = os.path.splitext(filename)
-    ext_suffix = sysconfig.get_config_var('EXT_SUFFIX')
-
-    if ext_suffix == ext:
-        return filename
-
-    ext_suffix = ext_suffix.replace(ext, '')
-    idx = name.find(ext_suffix)
-
-    if idx == -1:
-        return filename
-    else:
-        return name[:idx] + ext
-
-
-class BuildExtWithoutPlatformSuffix(build_ext):
-    def get_ext_filename(self, ext_name):
-        filename = super().get_ext_filename(ext_name)
-        return get_ext_filename_without_platform_suffix(filename)
-
-
-
 
 setup(ext_modules=[Extension(name="cOptical", 
-                             sources=["optical_flow_wrapper.pyx", 
-                              "../opt_flow_img.cpp"], 
+                             sources=[ "optpy.cpp", "../opt_flow_img.cpp"], 
+                             libraries=['boost_python-py35', 'opencv_contrib', 'opencv_core', 
+                             'opencv_features2d', 'opencv_flann','opencv_gpu','opencv_highgui', 'opencv_imgproc',
+                              'opencv_legacy','opencv_ml', 'opencv_objdetect','opencv_ocl', 'opencv_photo',
+                              'opencv_stitching', 'opencv_superres', 'opencv_ts', 'opencv_video', 'opencv_videostab'],
                               include_dirs=incDirs,
                               library_dirs=libDirs,
                               language="c++",
-                              extra_compile_args=cflags)],
-      cmdclass = {'build_ext': BuildExtWithoutPlatformSuffix})
+                              extra_compile_args=cflags)])

@@ -44,8 +44,8 @@ int main(int argc, char *argv[] )
 	}
     
     pre_process::OpticalFlow opt_flow;
-    VideoCapture cap;
+    // VideoCapture cap;
     opt_flow.compute_Flow(start_with_vid,  gpuID,  type,  frameSkip,
-                         vid_path,  out_path,  out_path_jpeg, cap);
+                         vid_path,  out_path,  out_path_jpeg);
     return 0;
 }

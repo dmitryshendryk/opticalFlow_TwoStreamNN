@@ -1,6 +1,6 @@
 #include "opt_flow.hpp"
 
-namespace pre_process
+namespace pre_process 
 {
 OpticalFlow::OpticalFlow() {}
 OpticalFlow::~OpticalFlow() {}
@@ -19,8 +19,10 @@ void OpticalFlow::convertFlowToImage(const Mat &flowIn, Mat &flowOut,
     }
 #undef CAST
 }
+
+
 int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
-                              std::string vid_path, std::string out_path, std::string out_path_jpeg, VideoCapture cap)
+                              std::string vid_path, std::string out_path, std::string out_path_jpeg)
 {
 
     float MIN_SZ = 256;
@@ -64,11 +66,11 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
     //     }
     // }
     // closedir(dirp);
-
     cv::cuda::setDevice(gpuID);
     Mat capture_frame, capture_image, prev_image, capture_gray, prev_gray, human_mask;
 
     cv::cuda::printShortCudaDeviceInfo(cv::cuda::getDevice());
+
 
     Ptr<cuda::BroxOpticalFlow> dflow = cuda::BroxOpticalFlow::create(alpha_, gamma_, scale_factor_, inner_iterations_, outer_iterations_, solver_iterations_);
 
@@ -166,13 +168,16 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
         // 	//}
         // 	vidcount++;
 
-        // VideoCapture cap;
+        VideoCapture cap;
+        std::cout << "VideoCapture" << '\n';
         try
-        {
+        {   std::cout << vid_path << '\n';
             cap.open(vid_path);
+            
         }
         catch (std::exception &e)
         {
+            
             std::cout << e.what() << '\n';
         }
 
@@ -183,9 +188,10 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
         {
             return -1;
         }
+        std::cout << "cap.open" << '\n';
 
         cap >> frame1_rgb_;
-
+         std::cout << " cap >> frame1_rgb_" << '\n';
         if (resize_img == true)
         {
             factor = std::max<float>(MIN_SZ / frame1_rgb_.cols, MIN_SZ / frame1_rgb_.rows);
@@ -215,6 +221,7 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
         }
 
         // Allocate memory for the images
+        std::cout << "cap.open1" << '\n';
         frame0_rgb = cv::Mat(Size(width, height), CV_8UC3);
         flow_rgb = cv::Mat(Size(width, height), CV_8UC3);
         motion_flow = cv::Mat(Size(width, height), CV_8UC3);
@@ -398,4 +405,4 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
         }
     // }
 }
-} // namespace pre_process
+}
