@@ -29,12 +29,10 @@ sys.path.append(ROOT_DIR)
 import flowfilter.plot as fplot
 import flowfilter.gpu.flowfilters as gpufilter
 
-from src.dataset import DatasetOptical
 
 
 def demo(yolo, createDataset_flag=False):
 
-    datasetOptical = DatasetOptical()
 
    # Definition of the parameters
     max_cosine_distance = 0.3
@@ -58,7 +56,6 @@ def demo(yolo, createDataset_flag=False):
     video_capture = cv2.VideoCapture('/home/dmitry/Documents/Projects/deep_sort_yolov3/dataset/YoutubeVid1.mp4')
 
 
-    dt = DatasetOptical()
 
     if writeVideo_flag:
     # Define the codec and create VideoWriter object
@@ -108,27 +105,25 @@ def demo(yolo, createDataset_flag=False):
             bbox = det.to_tlbr()
             cv2.rectangle(frame,(int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])),(255,0,0), 2)
         
-        cv2.namedWindow("Optical flow", cv2.WINDOW_NORMAL)
+        # cv2.namedWindow("Optical flow", cv2.WINDOW_NORMAL)
         cv2.namedWindow("Tracking", cv2.WINDOW_NORMAL)
         # Compute optical flow 
-        img = cv2.cvtColor(frame_flow, cv2.COLOR_BGR2GRAY)
-        img = misc.imresize(img, (480, 640))
-        gpuF.loadImage(img)
-        gpuF.compute()
-        flow = gpuF.getFlow()
+        # img = cv2.cvtColor(frame_flow, cv2.COLOR_BGR2GRAY)
+        # img = misc.imresize(img, (480, 640))
+        # gpuF.loadImage(img)
+        # gpuF.compute()
+        # flow = gpuF.getFlow()
 
         # rgb_frame_out.write(frame)
-        opt_flow = fplot.flowToColor(flow, 3.0)
+        # opt_flow = fplot.flowToColor(flow, 3.0)
         
         # optical_frame_out.write(opt_flow)
         # cv2.imwrite("frame%d.jpg" % count, frame)
         # cv2.imwrite("optical_frame%d.jpg" % count, opt_flow)
 
-        if createDataset_flag:
-            dt.generate_dataset_video( 'no_accidents', frame, opt_flow, count, '0001')
 
         
-        cv2.imshow("Optical flow", fplot.flowToColor(flow, 3.0))
+        # cv2.imshow("Optical flow", fplot.flowToColor(flow, 3.0))
         cv2.imshow('Tracking', frame)
         count += 1
         if writeVideo_flag:
@@ -156,6 +151,3 @@ def demo(yolo, createDataset_flag=False):
         out.release()
         list_file.close()
     cv2.destroyAllWindows()
-
-if __name__ == '__main__':
-    main(YOLO())
