@@ -24,7 +24,6 @@ void OpticalFlow::convertFlowToImage(const Mat &flowIn, Mat &flowOut,
 int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
                               std::string vid_path, std::string out_path, std::string out_path_jpeg)
 {
-
     float MIN_SZ = 256;
     float OUT_SZ = 256;
 
@@ -69,7 +68,7 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
     cv::cuda::setDevice(gpuID);
     Mat capture_frame, capture_image, prev_image, capture_gray, prev_gray, human_mask;
 
-    cv::cuda::printShortCudaDeviceInfo(cv::cuda::getDevice());
+    // cv::cuda::printShortCudaDeviceInfo(cv::cuda::getDevice());
 
 
     Ptr<cuda::BroxOpticalFlow> dflow = cuda::BroxOpticalFlow::create(alpha_, gamma_, scale_factor_, inner_iterations_, outer_iterations_, solver_iterations_);
@@ -167,12 +166,12 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
         // 	std::cout << video << "    " << vidcount+1 << "/" << totalvideos <<  std::endl;
         // 	//}
         // 	vidcount++;
+        cout << vid_path << endl;
 
         VideoCapture cap;
-        std::cout << "VideoCapture" << '\n';
         try
-        {   std::cout << vid_path << '\n';
-            cap.open(vid_path);
+        {  
+            cap.open("/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/videos/YoutubeVid2.mp4");
             
         }
         catch (std::exception &e)
@@ -188,10 +187,8 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
         {
             return -1;
         }
-        std::cout << "cap.open" << '\n';
 
         cap >> frame1_rgb_;
-         std::cout << " cap >> frame1_rgb_" << '\n';
         if (resize_img == true)
         {
             factor = std::max<float>(MIN_SZ / frame1_rgb_.cols, MIN_SZ / frame1_rgb_.rows);
@@ -221,7 +218,6 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
         }
 
         // Allocate memory for the images
-        std::cout << "cap.open1" << '\n';
         frame0_rgb = cv::Mat(Size(width, height), CV_8UC3);
         flow_rgb = cv::Mat(Size(width, height), CV_8UC3);
         motion_flow = cv::Mat(Size(width, height), CV_8UC3);
@@ -238,9 +234,8 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
         // outfile_v = out_folder_v.toStdString();
         outfile_u = "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output_x/";
         outfile_v = "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output_y/";
-        std::cout << "outfile_u11111:" << outfile_u  << std::endl;
         // outfile_flow  = out_folder_flow.toStdString();
-
+        cout << frame1.empty()  << endl;
         while (frame1.empty() == false)
         {
             gettimeofday(&tod1, NULL);
@@ -333,8 +328,9 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
 
                 imwrite(outfile_u + cad, img_u);
                 imwrite(outfile_v + cad, img_v);
-                std::cout << "outfile_u:" << outfile_u  << std::endl;
-                std::cout << "outfile_v:" << outfile_v  << std::endl;
+                cout << img_u << endl;
+
+                
                 //imwrite(outfile_flow+cad, optflow);
 
                 if (bins == true)
@@ -359,7 +355,7 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
             }
             if (debug)
             {
-                std::cout << "writing:" << outfile_jpeg + cad << std::endl;
+                
             }
             frame1_rgb.copyTo(frame0_rgb);
             cvtColor(frame0_rgb, frame0, CV_BGR2GRAY);
@@ -394,9 +390,6 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
             {
                 t2fr = tod1.tv_sec + tod1.tv_usec / 1000000.0;
                 tdframe = 1000.0 * (t2fr - t1fr);
-                //  cout << "Processing video" << fName << "ID="<< vidID <<  " Frame Number: " << nframes << endl;
-                cout << "Time type=" << type << " Flow: " << tdflow << " ms" << endl;
-                cout << "Time All: " << tdframe << " ms" << endl;
             }
         }
         if (bins == true)

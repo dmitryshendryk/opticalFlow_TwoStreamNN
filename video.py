@@ -19,6 +19,7 @@ from deep_sort.tracker import Tracker
 from tools import generate_detections as gdet
 from deep_sort.detection import Detection as ddet
 warnings.filterwarnings('ignore')
+from io import StringIO
 
 
 from scipy import misc 
@@ -29,20 +30,29 @@ sys.path.append(ROOT_DIR)
 import flowfilter.plot as fplot
 import flowfilter.gpu.flowfilters as gpufilter
 
+from subprocess import Popen, PIPE 
+import subprocess
+from threading import Thread
+from queue import Queue, Empty
 
 
-def demo(yolo, createDataset_flag=False):
+def enqueue_output(out, queue):
+    for line in iter(out.readline, b''):
+        queue.put(line)
+    out.close()
 
+def demo(yolo, vid_path):
 
+    ON_POSIX = 'posix' in sys.builtin_module_names
    # Definition of the parameters
     max_cosine_distance = 0.3
     nn_budget = None
     nms_max_overlap = 1.0
 
-    gpuF = gpufilter.PyramidalFlowFilter(480, 640, 2)
-    gpuF.gamma = [10, 50]                                   # gains for each level
-    gpuF.maxflow = 4.0                                      # maximum optical flow value
-    gpuF.smoothIterations = [2, 4]                          # smooth iterations per level
+    # gpuF = gpufilter.PyramidalFlowFilter(480, 640, 2)
+    # gpuF.gamma = [10, 50]                                   # gains for each level
+    # gpuF.maxflow = 4.0                                      # maximum optical flow value
+    # gpuF.smoothIterations = [2, 4]                          # smooth iterations per level
     
    # deep_sort 
     model_filename = 'model_data/mars-small128.pb'
@@ -53,19 +63,17 @@ def demo(yolo, createDataset_flag=False):
 
     writeVideo_flag = False 
     
-    video_capture = cv2.VideoCapture('/home/dmitry/Documents/Projects/deep_sort_yolov3/dataset/YoutubeVid1.mp4')
+    video_capture = cv2.VideoCapture(0)
+    # p = subprocess.check_output("./compute_flow --gpuID=1 --type=1 --skip=100 --vid_path=/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/videos/YoutubeVid2.mp4 --out_path=/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output",
+                    # shell=True)
+    p = Popen(['./compute_flow --gpuID=0 --type=1 --skip=10 --vid_path= /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/videos/YoutubeVid2.mp4 --out_path=/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output'],
+                shell=True, stdout=PIPE)
+    q = Queue()
+    t = Thread(target=enqueue_output, args=(p.stdout, q))
+    t.daemon = True
+    t.start()
 
 
-
-    if writeVideo_flag:
-    # Define the codec and create VideoWriter object
-        w = int(video_capture.get(3))
-        h = int(video_capture.get(4))
-        fourcc = cv2.VideoWriter_fourcc(*'MJPG')
-        out = cv2.VideoWriter('output.avi', fourcc, 15, (w, h))
-        list_file = open('detection.txt', 'w')
-        frame_index = -1 
-        
     fps = 0.0
     count = 0
     while True:
@@ -121,8 +129,23 @@ def demo(yolo, createDataset_flag=False):
         # cv2.imwrite("frame%d.jpg" % count, frame)
         # cv2.imwrite("optical_frame%d.jpg" % count, opt_flow)
 
+        try:
+            line = q.get_nowait()
+            
+            line = line.decode().replace('\n','').replace(';','').replace(' ','').split(',')
+            if len(line) > 3:
+                line = list(map(int, line[2:]))
+                line = np.array(line)
+                print("Result {}".format(line.reshape(640,1240)))
 
-        
+        except Empty:
+            pass
+            # print('no output yet')
+        else:
+            pass
+
+        # sub_results = p.decode("utf-8")
+        # print("Result: {}".format(sub_results))
         # cv2.imshow("Optical flow", fplot.flowToColor(flow, 3.0))
         cv2.imshow('Tracking', frame)
         count += 1
@@ -137,7 +160,7 @@ def demo(yolo, createDataset_flag=False):
             list_file.write('\n')
             
         fps  = ( fps + (1./(time.time()-t1)) ) / 2
-        print("fps= %f"%(fps))
+        # print("fps= %f"%(fps))
         
         # Press Q to stop!
         if cv2.waitKey(1) & 0xFF == ord('q'):

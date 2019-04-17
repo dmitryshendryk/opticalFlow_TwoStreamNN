@@ -18,12 +18,13 @@ if __name__ == '__main__':
     parser.add_argument('command', metavar='<command>', help="''")
     parser.add_argument('--spatial')
     parser.add_argument('--temporal')
+    parser.add_argument('--vid_path')
 
 
     args = parser.parse_args()
-
+    # '/home/dmitry/Documents/Projects/deep_sort_yolov3/dataset/YoutubeVid1.mp4'
     if args.command == 'demo':
-        demo(YOLO(), True)
+        demo(YOLO(), args.vid_path)
     
 
     if args.command == 'train_spatial':

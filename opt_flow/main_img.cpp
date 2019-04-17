@@ -40,7 +40,6 @@ int main(int argc, char *argv[] )
 		vid_path = parser.get<std::string>("vid_path");
 		out_path = parser.get<std::string>("out_path");
 		out_path_jpeg = out_path + "/rgb/";
-		cout << "start_vid:" << start_with_vid << "gpuID:" << gpuID << "flow method: "<< type << " frameSkip: " << frameSkip << " vid_path: " << vid_path << " out_path" << out_path << " jpegs: " << out_path_jpeg << endl;
 	}
     
     pre_process::OpticalFlow opt_flow;
