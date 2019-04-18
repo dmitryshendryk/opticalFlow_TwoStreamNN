@@ -1,4 +1,5 @@
 #include "opt_flow.hpp"
+#include "zmq_client.hpp"
 
 int main(int argc, char *argv[] )
 {
@@ -44,6 +45,9 @@ int main(int argc, char *argv[] )
     
     pre_process::OpticalFlow opt_flow;
     // VideoCapture cap;
+	client_task ct1;
+    std::thread t1_test(std::bind(&client_task::start, &ct1));
+	
     opt_flow.compute_Flow(start_with_vid,  gpuID,  type,  frameSkip,
                          vid_path,  out_path,  out_path_jpeg);
     return 0;

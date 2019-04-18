@@ -149,50 +149,113 @@ compute_flow_automoc/fast:
 	$(MAKE) -f CMakeFiles/compute_flow_automoc.dir/build.make CMakeFiles/compute_flow_automoc.dir/build
 .PHONY : compute_flow_automoc/fast
 
-# target to build an object file
-compute_flow_automoc.o:
-	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/compute_flow_automoc.o
+compute_flow_automoc.o: compute_flow_automoc.cpp.o
+
 .PHONY : compute_flow_automoc.o
 
-# target to preprocess a source file
-compute_flow_automoc.i:
-	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/compute_flow_automoc.i
+# target to build an object file
+compute_flow_automoc.cpp.o:
+	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.o
+.PHONY : compute_flow_automoc.cpp.o
+
+compute_flow_automoc.i: compute_flow_automoc.cpp.i
+
 .PHONY : compute_flow_automoc.i
 
-# target to generate assembly for a file
-compute_flow_automoc.s:
-	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/compute_flow_automoc.s
+# target to preprocess a source file
+compute_flow_automoc.cpp.i:
+	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.i
+.PHONY : compute_flow_automoc.cpp.i
+
+compute_flow_automoc.s: compute_flow_automoc.cpp.s
+
 .PHONY : compute_flow_automoc.s
 
-# target to build an object file
-main_img.o:
-	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/main_img.o
+# target to generate assembly for a file
+compute_flow_automoc.cpp.s:
+	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.s
+.PHONY : compute_flow_automoc.cpp.s
+
+main_img.o: main_img.cpp.o
+
 .PHONY : main_img.o
 
-# target to preprocess a source file
-main_img.i:
-	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/main_img.i
+# target to build an object file
+main_img.cpp.o:
+	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/main_img.cpp.o
+.PHONY : main_img.cpp.o
+
+main_img.i: main_img.cpp.i
+
 .PHONY : main_img.i
 
-# target to generate assembly for a file
-main_img.s:
-	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/main_img.s
+# target to preprocess a source file
+main_img.cpp.i:
+	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/main_img.cpp.i
+.PHONY : main_img.cpp.i
+
+main_img.s: main_img.cpp.s
+
 .PHONY : main_img.s
 
-# target to build an object file
-opt_flow_img.o:
-	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/opt_flow_img.o
+# target to generate assembly for a file
+main_img.cpp.s:
+	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/main_img.cpp.s
+.PHONY : main_img.cpp.s
+
+opt_flow_img.o: opt_flow_img.cpp.o
+
 .PHONY : opt_flow_img.o
 
-# target to preprocess a source file
-opt_flow_img.i:
-	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/opt_flow_img.i
+# target to build an object file
+opt_flow_img.cpp.o:
+	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/opt_flow_img.cpp.o
+.PHONY : opt_flow_img.cpp.o
+
+opt_flow_img.i: opt_flow_img.cpp.i
+
 .PHONY : opt_flow_img.i
 
-# target to generate assembly for a file
-opt_flow_img.s:
-	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/opt_flow_img.s
+# target to preprocess a source file
+opt_flow_img.cpp.i:
+	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/opt_flow_img.cpp.i
+.PHONY : opt_flow_img.cpp.i
+
+opt_flow_img.s: opt_flow_img.cpp.s
+
 .PHONY : opt_flow_img.s
+
+# target to generate assembly for a file
+opt_flow_img.cpp.s:
+	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/opt_flow_img.cpp.s
+.PHONY : opt_flow_img.cpp.s
+
+zmq_client.o: zmq_client.cpp.o
+
+.PHONY : zmq_client.o
+
+# target to build an object file
+zmq_client.cpp.o:
+	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/zmq_client.cpp.o
+.PHONY : zmq_client.cpp.o
+
+zmq_client.i: zmq_client.cpp.i
+
+.PHONY : zmq_client.i
+
+# target to preprocess a source file
+zmq_client.cpp.i:
+	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/zmq_client.cpp.i
+.PHONY : zmq_client.cpp.i
+
+zmq_client.s: zmq_client.cpp.s
+
+.PHONY : zmq_client.s
+
+# target to generate assembly for a file
+zmq_client.cpp.s:
+	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/zmq_client.cpp.s
+.PHONY : zmq_client.cpp.s
 
 # Help Target
 help:
@@ -214,6 +277,9 @@ help:
 	@echo "... opt_flow_img.o"
 	@echo "... opt_flow_img.i"
 	@echo "... opt_flow_img.s"
+	@echo "... zmq_client.o"
+	@echo "... zmq_client.i"
+	@echo "... zmq_client.s"
 .PHONY : help
 
 

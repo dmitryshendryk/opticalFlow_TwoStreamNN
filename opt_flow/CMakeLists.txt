@@ -1,6 +1,7 @@
-cmake_minimum_required(VERSION 2.4)
+cmake_minimum_required(VERSION 3.5)
 #set(OpenCV_DIR /home/pedro/opencv-3.1.0/build)
 # QT5 insert
+  list (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
   # Tell CMake to run moc when necessary:
   set(CMAKE_AUTOMOC ON)
@@ -41,7 +42,10 @@ if(COMMAND cmake_policy)
    cmake_policy(SET CMP0003 NEW)
 endif(COMMAND cmake_policy)
 
+find_package(Threads REQUIRED)
 
+# ZeroMq
+find_package(ZeroMQ  REQUIRED)
 
 option(WARP ON)
 if(WARP)
@@ -53,6 +57,8 @@ if(WARP)
 
     TARGET_LINK_LIBRARIES(
       compute_flow_si_warp
+      ${ZMQLIB}
+      pthread
       ${OPENCV_LIBRARIES}
       ${OpenCV_LIBS}
       ${Qt5Widgets_LIBRARIES}
@@ -62,11 +68,14 @@ else()
       compute_flow
       opt_flow_img.cpp
       main_img.cpp
+      zmq_client.cpp
       ${SRCS}
     )
 
     TARGET_LINK_LIBRARIES(
       compute_flow
+      ${ZeroMQ_LIBRARY}
+      pthread
       ${OPENCV_LIBRARIES}
       ${OpenCV_LIBS}
       ${Qt5Widgets_LIBRARIES}

@@ -1,4 +1,4 @@
-set(AM_SOURCES "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/opt_flow_img.cpp;/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/main_img.cpp" )
+set(AM_SOURCES "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/opt_flow_img.cpp;/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/main_img.cpp;/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/zmq_client.cpp" )
 set(AM_RCC_SOURCES  )
 set(AM_RCC_INPUTS )
 set(AM_SKIP_MOC "" )

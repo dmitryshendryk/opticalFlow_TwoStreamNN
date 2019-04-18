@@ -1,4 +1,6 @@
 #include "opt_flow.hpp"
+#include <zmq.hpp>
+
 
 namespace pre_process 
 {
@@ -55,117 +57,23 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
     int vidcount = 0;
 
     int totalvideos = 0;
-    // DIR * dirp;
     struct dirent *entry;
 
-    // dirp = opendir(vid_path.c_str()); /* There should be error handling after this */
-    // while ((entry = readdir(dirp)) != NULL) {
-    //     if (entry->d_type == DT_REG) { /* If the entry is a regular file */
-    //          totalvideos++;
-    //     }
-    // }
-    // closedir(dirp);
     cv::cuda::setDevice(gpuID);
     Mat capture_frame, capture_image, prev_image, capture_gray, prev_gray, human_mask;
 
     // cv::cuda::printShortCudaDeviceInfo(cv::cuda::getDevice());
+    /////// zmq client 
 
+    //////////////
 
     Ptr<cuda::BroxOpticalFlow> dflow = cuda::BroxOpticalFlow::create(alpha_, gamma_, scale_factor_, inner_iterations_, outer_iterations_, solver_iterations_);
 
     Ptr<cuda::OpticalFlowDual_TVL1> alg_tvl1 = cuda::OpticalFlowDual_TVL1::create();
 
-    // QString vpath = QString::fromStdString(vid_path);
-    // QStringList filters;
-
-    // QDirIterator dirIt(vpath, QDirIterator::Subdirectories);
-
     int vidID = 0;
     std::string video, outfile_u, outfile_v, outfile_flow, outfile_jpeg;
 
-    // while (1)
-    // {
-        //std::cout << "asdf "<< std::endl;
-        // dirIt.next();
-        // QString file = dirIt.fileName();
-        // 	if ((QFileInfo(dirIt.filePath()).suffix() == "mp4") || (QFileInfo(dirIt.filePath()).suffix() == "avi"))
-        // 	{
-        // 		video = dirIt.filePath().toStdString();
-        // 	}
-
-        // 	else
-        // 		continue;
-
-        // 	vidID++;
-
-        // 	if (vidID < start_with_vid)
-        // 		continue;
-
-        // 	std::string fName(video);
-        // 	std::string path(video);
-        // 	size_t last_slash_idx = std::string::npos;
-        // 	if (!createOutDirs)
-        // 	{
-        // 		// Remove directory if present.
-        // 		// Do this before extension removal incase directory has a period character.
-        // 		std::cout << "removing directories: " << fName << std::endl;
-        // 		last_slash_idx = fName.find_last_of("\\/");
-        // 		if (std::string::npos != last_slash_idx)
-        // 		{
-        // 			fName.erase(0, last_slash_idx + 1);
-        // 			path.erase(last_slash_idx + 1, path.length());
-        // 		}
-        // 	}
-        // 	else
-        // 	{
-        // 		last_slash_idx = fName.find(vid_path);
-        // 		fName.erase(0, vid_path.length());
-        // 		path.erase(vid_path.length(), path.length());
-        // 	}
-
-        // 	// Remove extension if present.
-        // 	const size_t period_idx = fName.rfind('.');
-        // 	if (std::string::npos != period_idx)
-        // 		fName.erase(period_idx);
-
-        // 	QString out_folder_u = QString::fromStdString(out_path + "_x/" + fName);
-
-        // 	bool folder_exists = QDir(out_folder_u).exists();
-
-        // 	if (folder_exists) {
-        // 	std::cout << "already exists: " << out_path << fName << std::endl;
-        // 	continue;
-        // 	}
-
-        // 	bool folder_created = QDir().mkpath(out_folder_u);
-        // 	if (!folder_created) {
-        // 	std::cout << "cannot create: " << out_path << fName << std::endl;
-        // 	continue;
-        // 	}
-        // 	QString out_folder_v = QString::fromStdString(out_path + "_y/" + fName);
-        // 	QDir().mkpath(out_folder_v);
-        // 	if(rgb){
-        // 		QString out_folder_jpeg = QString::fromStdString(out_path_jpeg + fName);
-        // 		QDir().mkpath(out_folder_jpeg);
-        // 		outfile_jpeg = out_folder_jpeg.toStdString();
-        // 	}
-
-        // 	QString out_folder_flow = QString::fromStdString(out_path + "/" + fName);
-        // 	QDir().mkpath(out_folder_flow);
-
-        // 	// Create a separate folder for the .bins
-        // 	FILE *fx = NULL;
-        // 	if (bins == true){
-        // 		QString out_folder_bins = QString::fromStdString(out_path + "bins/" + fName);
-        // 		QDir().mkpath(out_folder_bins);
-        // 		std::string outfile = out_path + "bins/" + fName + ".bin";
-        // 		FILE *fx = fopen(outfile.c_str(),"wb");
-        // 	}
-
-        // 	//if(debug){
-        // 	std::cout << video << "    " << vidcount+1 << "/" << totalvideos <<  std::endl;
-        // 	//}
-        // 	vidcount++;
         cout << vid_path << endl;
 
         VideoCapture cap;
@@ -328,7 +236,12 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
 
                 imwrite(outfile_u + cad, img_u);
                 imwrite(outfile_v + cad, img_v);
-                cout << img_u << endl;
+
+               
+ 
+
+                // cout << img_u.rows << endl;
+                // cout << img_u.channels() << endl;
 
                 
                 //imwrite(outfile_flow+cad, optflow);

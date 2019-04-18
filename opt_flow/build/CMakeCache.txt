@@ -20,10 +20,6 @@ BUILD_EXAMPLES:UNINITIALIZED=ON
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
 
-//For backwards compatibility, what version of CMake commands and
-// syntax should this version of CMake try to support.
-CMAKE_BACKWARDS_COMPATIBILITY:STRING=2.4
-
 //Choose the type of build, options are: None(CMAKE_CXX_FLAGS or
 // CMAKE_C_FLAGS used) Debug Release RelWithDebInfo MinSizeRel.
 CMAKE_BUILD_TYPE:STRING=RELEASE
@@ -293,14 +289,8 @@ CUDA_rt_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/librt.so
 //No help, variable specified on the command line.
 ENABLE_FAST_MATH:UNINITIALIZED=1
 
-//Single output directory for building all executables.
-EXECUTABLE_OUTPUT_PATH:PATH=
-
 //No help, variable specified on the command line.
 INSTALL_PYTHON_EXAMPLES:UNINITIALIZED=ON
-
-//Single output directory for building all libraries.
-LIBRARY_OUTPUT_PATH:PATH=
 
 //No help, variable specified on the command line.
 OPENCV_EXTRA_MODULES_PATH:UNINITIALIZED=../../opencv_contrib-3.4.5/modules
@@ -331,6 +321,15 @@ WITH_CUBLAS:UNINITIALIZED=1
 
 //No help, variable specified on the command line.
 WITH_CUDA:UNINITIALIZED=ON
+
+//Path to a file.
+ZeroMQ_INCLUDE_DIR:PATH=/home/dmitry/anaconda3/include
+
+//Path to a library.
+ZeroMQ_LIBRARY:FILEPATH=/home/dmitry/anaconda3/lib/libzmq.so
+
+//Path to a file.
+ZeroMQ_ROOT_DIR:PATH=/home/dmitry/anaconda3
 
 
 ########################
@@ -555,4 +554,12 @@ FIND_PACKAGE_MESSAGE_DETAILS_CUDA:INTERNAL=[/usr/local/cuda][/usr/local/cuda/bin
 FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/usr/local][v3.4.5()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//Details about finding ZeroMQ
+FIND_PACKAGE_MESSAGE_DETAILS_ZeroMQ:INTERNAL=[/home/dmitry/anaconda3/lib/libzmq.so][/home/dmitry/anaconda3/include][v4.2.5()]
+//ADVANCED property for variable: ZeroMQ_INCLUDE_DIR
+ZeroMQ_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ZeroMQ_LIBRARY
+ZeroMQ_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ZeroMQ_ROOT_DIR
+ZeroMQ_ROOT_DIR-ADVANCED:INTERNAL=1
 

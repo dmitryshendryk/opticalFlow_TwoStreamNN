@@ -34,6 +34,7 @@ from subprocess import Popen, PIPE
 import subprocess
 from threading import Thread
 from queue import Queue, Empty
+from tools.my_zmq import ServerTask
 
 
 def enqueue_output(out, queue):
@@ -43,7 +44,10 @@ def enqueue_output(out, queue):
 
 def demo(yolo, vid_path):
 
-    ON_POSIX = 'posix' in sys.builtin_module_names
+    server = ServerTask()
+    server.start()
+
+    # ON_POSIX = 'posix' in sys.builtin_module_names
    # Definition of the parameters
     max_cosine_distance = 0.3
     nn_budget = None
@@ -63,15 +67,15 @@ def demo(yolo, vid_path):
 
     writeVideo_flag = False 
     
-    video_capture = cv2.VideoCapture(0)
+    video_capture = cv2.VideoCapture('/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/videos/YoutubeVid2.mp4')
     # p = subprocess.check_output("./compute_flow --gpuID=1 --type=1 --skip=100 --vid_path=/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/videos/YoutubeVid2.mp4 --out_path=/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output",
                     # shell=True)
-    p = Popen(['./compute_flow --gpuID=0 --type=1 --skip=10 --vid_path= /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/videos/YoutubeVid2.mp4 --out_path=/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output'],
-                shell=True, stdout=PIPE)
-    q = Queue()
-    t = Thread(target=enqueue_output, args=(p.stdout, q))
-    t.daemon = True
-    t.start()
+    # p = Popen(['./compute_flow --gpuID=0 --type=1 --skip=10 --vid_path= /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/videos/YoutubeVid2.mp4 --out_path=/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output'],
+                # shell=True, stdout=PIPE)
+    # q = Queue()
+    # t = Thread(target=enqueue_output, args=(p.stdout, q))
+    # t.daemon = True
+    # t.start()
 
 
     fps = 0.0
@@ -129,20 +133,21 @@ def demo(yolo, vid_path):
         # cv2.imwrite("frame%d.jpg" % count, frame)
         # cv2.imwrite("optical_frame%d.jpg" % count, opt_flow)
 
-        try:
-            line = q.get_nowait()
-            
-            line = line.decode().replace('\n','').replace(';','').replace(' ','').split(',')
-            if len(line) > 3:
-                line = list(map(int, line[2:]))
-                line = np.array(line)
-                print("Result {}".format(line.reshape(640,1240)))
+        # try:
+        #     line = q.get_nowait()
+            # std_buf = StringIO(line)
+            # print(std_buf)
+            # line = line.decode().replace('\n','').replace(';','').replace(' ','').split(',')
+            # if len(line) > 3:
+            #     line = list(map(int, line[2:]))
+            #     line = np.array(line)
+            #     print("Result {}".format(line.reshape(640,1240)))
 
-        except Empty:
-            pass
+        # except Empty:
+            # pass
             # print('no output yet')
-        else:
-            pass
+        # else:
+            # pass
 
         # sub_results = p.decode("utf-8")
         # print("Result: {}".format(sub_results))

@@ -13,6 +13,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.5.1/CMakeSystem.cmake"
   "CMakeFiles/feature_tests.c"
   "CMakeFiles/feature_tests.cxx"
+  "../cmake/FindZeroMQ.cmake"
   "/home/dmitry/anaconda3/lib/cmake/Qt5Core/Qt5CoreConfig.cmake"
   "/home/dmitry/anaconda3/lib/cmake/Qt5Core/Qt5CoreConfigExtras.cmake"
   "/home/dmitry/anaconda3/lib/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake"

@@ -1,8 +1,9 @@
 file(REMOVE_RECURSE
   "compute_flow_automoc.cpp"
-  "CMakeFiles/compute_flow.dir/opt_flow_img.o"
-  "CMakeFiles/compute_flow.dir/main_img.o"
-  "CMakeFiles/compute_flow.dir/compute_flow_automoc.o"
+  "CMakeFiles/compute_flow.dir/opt_flow_img.cpp.o"
+  "CMakeFiles/compute_flow.dir/main_img.cpp.o"
+  "CMakeFiles/compute_flow.dir/zmq_client.cpp.o"
+  "CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.o"
   "compute_flow.pdb"
   "compute_flow"
 )

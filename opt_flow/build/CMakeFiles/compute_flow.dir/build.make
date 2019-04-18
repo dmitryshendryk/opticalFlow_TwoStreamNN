@@ -57,91 +57,118 @@ include CMakeFiles/compute_flow.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/compute_flow.dir/flags.make
 
-CMakeFiles/compute_flow.dir/opt_flow_img.o: CMakeFiles/compute_flow.dir/flags.make
-CMakeFiles/compute_flow.dir/opt_flow_img.o: ../opt_flow_img.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/compute_flow.dir/opt_flow_img.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/compute_flow.dir/opt_flow_img.o -c /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/opt_flow_img.cpp
+CMakeFiles/compute_flow.dir/opt_flow_img.cpp.o: CMakeFiles/compute_flow.dir/flags.make
+CMakeFiles/compute_flow.dir/opt_flow_img.cpp.o: ../opt_flow_img.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/compute_flow.dir/opt_flow_img.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/compute_flow.dir/opt_flow_img.cpp.o -c /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/opt_flow_img.cpp
 
-CMakeFiles/compute_flow.dir/opt_flow_img.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/compute_flow.dir/opt_flow_img.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/opt_flow_img.cpp > CMakeFiles/compute_flow.dir/opt_flow_img.i
+CMakeFiles/compute_flow.dir/opt_flow_img.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/compute_flow.dir/opt_flow_img.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/opt_flow_img.cpp > CMakeFiles/compute_flow.dir/opt_flow_img.cpp.i
 
-CMakeFiles/compute_flow.dir/opt_flow_img.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/compute_flow.dir/opt_flow_img.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/opt_flow_img.cpp -o CMakeFiles/compute_flow.dir/opt_flow_img.s
+CMakeFiles/compute_flow.dir/opt_flow_img.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/compute_flow.dir/opt_flow_img.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/opt_flow_img.cpp -o CMakeFiles/compute_flow.dir/opt_flow_img.cpp.s
 
-CMakeFiles/compute_flow.dir/opt_flow_img.o.requires:
+CMakeFiles/compute_flow.dir/opt_flow_img.cpp.o.requires:
 
-.PHONY : CMakeFiles/compute_flow.dir/opt_flow_img.o.requires
+.PHONY : CMakeFiles/compute_flow.dir/opt_flow_img.cpp.o.requires
 
-CMakeFiles/compute_flow.dir/opt_flow_img.o.provides: CMakeFiles/compute_flow.dir/opt_flow_img.o.requires
-	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/opt_flow_img.o.provides.build
-.PHONY : CMakeFiles/compute_flow.dir/opt_flow_img.o.provides
+CMakeFiles/compute_flow.dir/opt_flow_img.cpp.o.provides: CMakeFiles/compute_flow.dir/opt_flow_img.cpp.o.requires
+	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/opt_flow_img.cpp.o.provides.build
+.PHONY : CMakeFiles/compute_flow.dir/opt_flow_img.cpp.o.provides
 
-CMakeFiles/compute_flow.dir/opt_flow_img.o.provides.build: CMakeFiles/compute_flow.dir/opt_flow_img.o
-
-
-CMakeFiles/compute_flow.dir/main_img.o: CMakeFiles/compute_flow.dir/flags.make
-CMakeFiles/compute_flow.dir/main_img.o: ../main_img.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/compute_flow.dir/main_img.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/compute_flow.dir/main_img.o -c /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/main_img.cpp
-
-CMakeFiles/compute_flow.dir/main_img.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/compute_flow.dir/main_img.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/main_img.cpp > CMakeFiles/compute_flow.dir/main_img.i
-
-CMakeFiles/compute_flow.dir/main_img.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/compute_flow.dir/main_img.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/main_img.cpp -o CMakeFiles/compute_flow.dir/main_img.s
-
-CMakeFiles/compute_flow.dir/main_img.o.requires:
-
-.PHONY : CMakeFiles/compute_flow.dir/main_img.o.requires
-
-CMakeFiles/compute_flow.dir/main_img.o.provides: CMakeFiles/compute_flow.dir/main_img.o.requires
-	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/main_img.o.provides.build
-.PHONY : CMakeFiles/compute_flow.dir/main_img.o.provides
-
-CMakeFiles/compute_flow.dir/main_img.o.provides.build: CMakeFiles/compute_flow.dir/main_img.o
+CMakeFiles/compute_flow.dir/opt_flow_img.cpp.o.provides.build: CMakeFiles/compute_flow.dir/opt_flow_img.cpp.o
 
 
-CMakeFiles/compute_flow.dir/compute_flow_automoc.o: CMakeFiles/compute_flow.dir/flags.make
-CMakeFiles/compute_flow.dir/compute_flow_automoc.o: compute_flow_automoc.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/compute_flow.dir/compute_flow_automoc.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/compute_flow.dir/compute_flow_automoc.o -c /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/compute_flow_automoc.cpp
+CMakeFiles/compute_flow.dir/main_img.cpp.o: CMakeFiles/compute_flow.dir/flags.make
+CMakeFiles/compute_flow.dir/main_img.cpp.o: ../main_img.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/compute_flow.dir/main_img.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/compute_flow.dir/main_img.cpp.o -c /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/main_img.cpp
 
-CMakeFiles/compute_flow.dir/compute_flow_automoc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/compute_flow.dir/compute_flow_automoc.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/compute_flow_automoc.cpp > CMakeFiles/compute_flow.dir/compute_flow_automoc.i
+CMakeFiles/compute_flow.dir/main_img.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/compute_flow.dir/main_img.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/main_img.cpp > CMakeFiles/compute_flow.dir/main_img.cpp.i
 
-CMakeFiles/compute_flow.dir/compute_flow_automoc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/compute_flow.dir/compute_flow_automoc.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/compute_flow_automoc.cpp -o CMakeFiles/compute_flow.dir/compute_flow_automoc.s
+CMakeFiles/compute_flow.dir/main_img.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/compute_flow.dir/main_img.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/main_img.cpp -o CMakeFiles/compute_flow.dir/main_img.cpp.s
 
-CMakeFiles/compute_flow.dir/compute_flow_automoc.o.requires:
+CMakeFiles/compute_flow.dir/main_img.cpp.o.requires:
 
-.PHONY : CMakeFiles/compute_flow.dir/compute_flow_automoc.o.requires
+.PHONY : CMakeFiles/compute_flow.dir/main_img.cpp.o.requires
 
-CMakeFiles/compute_flow.dir/compute_flow_automoc.o.provides: CMakeFiles/compute_flow.dir/compute_flow_automoc.o.requires
-	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/compute_flow_automoc.o.provides.build
-.PHONY : CMakeFiles/compute_flow.dir/compute_flow_automoc.o.provides
+CMakeFiles/compute_flow.dir/main_img.cpp.o.provides: CMakeFiles/compute_flow.dir/main_img.cpp.o.requires
+	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/main_img.cpp.o.provides.build
+.PHONY : CMakeFiles/compute_flow.dir/main_img.cpp.o.provides
 
-CMakeFiles/compute_flow.dir/compute_flow_automoc.o.provides.build: CMakeFiles/compute_flow.dir/compute_flow_automoc.o
+CMakeFiles/compute_flow.dir/main_img.cpp.o.provides.build: CMakeFiles/compute_flow.dir/main_img.cpp.o
+
+
+CMakeFiles/compute_flow.dir/zmq_client.cpp.o: CMakeFiles/compute_flow.dir/flags.make
+CMakeFiles/compute_flow.dir/zmq_client.cpp.o: ../zmq_client.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/compute_flow.dir/zmq_client.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/compute_flow.dir/zmq_client.cpp.o -c /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/zmq_client.cpp
+
+CMakeFiles/compute_flow.dir/zmq_client.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/compute_flow.dir/zmq_client.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/zmq_client.cpp > CMakeFiles/compute_flow.dir/zmq_client.cpp.i
+
+CMakeFiles/compute_flow.dir/zmq_client.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/compute_flow.dir/zmq_client.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/zmq_client.cpp -o CMakeFiles/compute_flow.dir/zmq_client.cpp.s
+
+CMakeFiles/compute_flow.dir/zmq_client.cpp.o.requires:
+
+.PHONY : CMakeFiles/compute_flow.dir/zmq_client.cpp.o.requires
+
+CMakeFiles/compute_flow.dir/zmq_client.cpp.o.provides: CMakeFiles/compute_flow.dir/zmq_client.cpp.o.requires
+	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/zmq_client.cpp.o.provides.build
+.PHONY : CMakeFiles/compute_flow.dir/zmq_client.cpp.o.provides
+
+CMakeFiles/compute_flow.dir/zmq_client.cpp.o.provides.build: CMakeFiles/compute_flow.dir/zmq_client.cpp.o
+
+
+CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.o: CMakeFiles/compute_flow.dir/flags.make
+CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.o: compute_flow_automoc.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.o -c /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/compute_flow_automoc.cpp
+
+CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/compute_flow_automoc.cpp > CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.i
+
+CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/compute_flow_automoc.cpp -o CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.s
+
+CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.o.requires:
+
+.PHONY : CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.o.requires
+
+CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.o.provides: CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.o.requires
+	$(MAKE) -f CMakeFiles/compute_flow.dir/build.make CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.o.provides.build
+.PHONY : CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.o.provides
+
+CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.o.provides.build: CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.o
 
 
 # Object files for target compute_flow
 compute_flow_OBJECTS = \
-"CMakeFiles/compute_flow.dir/opt_flow_img.o" \
-"CMakeFiles/compute_flow.dir/main_img.o" \
-"CMakeFiles/compute_flow.dir/compute_flow_automoc.o"
+"CMakeFiles/compute_flow.dir/opt_flow_img.cpp.o" \
+"CMakeFiles/compute_flow.dir/main_img.cpp.o" \
+"CMakeFiles/compute_flow.dir/zmq_client.cpp.o" \
+"CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.o"
 
 # External object files for target compute_flow
 compute_flow_EXTERNAL_OBJECTS =
 
-compute_flow: CMakeFiles/compute_flow.dir/opt_flow_img.o
-compute_flow: CMakeFiles/compute_flow.dir/main_img.o
-compute_flow: CMakeFiles/compute_flow.dir/compute_flow_automoc.o
+compute_flow: CMakeFiles/compute_flow.dir/opt_flow_img.cpp.o
+compute_flow: CMakeFiles/compute_flow.dir/main_img.cpp.o
+compute_flow: CMakeFiles/compute_flow.dir/zmq_client.cpp.o
+compute_flow: CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.o
 compute_flow: CMakeFiles/compute_flow.dir/build.make
+compute_flow: /home/dmitry/anaconda3/lib/libzmq.so
 compute_flow: /usr/local/lib/libopencv_stitching.so.3.4.5
 compute_flow: /usr/local/lib/libopencv_superres.so.3.4.5
 compute_flow: /usr/local/lib/libopencv_cudacodec.so.3.4.5
@@ -206,7 +233,7 @@ compute_flow: /usr/local/lib/libopencv_cudev.so.3.4.5
 compute_flow: /home/dmitry/anaconda3/lib/libQt5Gui.so.5.9.5
 compute_flow: /home/dmitry/anaconda3/lib/libQt5Core.so.5.9.5
 compute_flow: CMakeFiles/compute_flow.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable compute_flow"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable compute_flow"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/compute_flow.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -214,9 +241,10 @@ CMakeFiles/compute_flow.dir/build: compute_flow
 
 .PHONY : CMakeFiles/compute_flow.dir/build
 
-CMakeFiles/compute_flow.dir/requires: CMakeFiles/compute_flow.dir/opt_flow_img.o.requires
-CMakeFiles/compute_flow.dir/requires: CMakeFiles/compute_flow.dir/main_img.o.requires
-CMakeFiles/compute_flow.dir/requires: CMakeFiles/compute_flow.dir/compute_flow_automoc.o.requires
+CMakeFiles/compute_flow.dir/requires: CMakeFiles/compute_flow.dir/opt_flow_img.cpp.o.requires
+CMakeFiles/compute_flow.dir/requires: CMakeFiles/compute_flow.dir/main_img.cpp.o.requires
+CMakeFiles/compute_flow.dir/requires: CMakeFiles/compute_flow.dir/zmq_client.cpp.o.requires
+CMakeFiles/compute_flow.dir/requires: CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.o.requires
 
 .PHONY : CMakeFiles/compute_flow.dir/requires
 

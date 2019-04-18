@@ -26,6 +26,9 @@
 #include "opencv2/core/cuda.hpp"
 #include "opencv2/cudaoptflow.hpp"
 
+#include <zmq.hpp>
+#include "zmq_client.hpp"
+
 #include <dirent.h>
 
 #define N_CHAR 500
@@ -51,7 +54,7 @@ namespace pre_process
             struct timeval tod1;
             double t1 = 0.0, t2 = 0.0, tdflow = 0.0, t1fr = 0.0, t2fr = 0.0, tdframe = 0.0;
 
-
+            
 
             OpticalFlow();
             ~OpticalFlow();

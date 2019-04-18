@@ -4,9 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/compute_flow_automoc.cpp" "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/CMakeFiles/compute_flow.dir/compute_flow_automoc.o"
-  "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/main_img.cpp" "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/CMakeFiles/compute_flow.dir/main_img.o"
-  "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/opt_flow_img.cpp" "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/CMakeFiles/compute_flow.dir/opt_flow_img.o"
+  "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/compute_flow_automoc.cpp" "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/CMakeFiles/compute_flow.dir/compute_flow_automoc.cpp.o"
+  "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/main_img.cpp" "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/CMakeFiles/compute_flow.dir/main_img.cpp.o"
+  "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/opt_flow_img.cpp" "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/CMakeFiles/compute_flow.dir/opt_flow_img.cpp.o"
+  "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/zmq_client.cpp" "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/CMakeFiles/compute_flow.dir/zmq_client.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
