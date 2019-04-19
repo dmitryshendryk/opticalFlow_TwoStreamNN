@@ -54,7 +54,7 @@ namespace pre_process
             struct timeval tod1;
             double t1 = 0.0, t2 = 0.0, tdflow = 0.0, t1fr = 0.0, t2fr = 0.0, tdframe = 0.0;
 
-            
+
 
             OpticalFlow();
             ~OpticalFlow();
@@ -62,7 +62,7 @@ namespace pre_process
             void convertFlowToImage(const Mat &flowIn, Mat &flowOut,
                         float lowerBound, float higherBound);
             int compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
-                        std::string vid_path, std::string out_path, std::string out_path_jpeg);
+                        std::string vid_path, std::string out_path, std::string out_path_jpeg, client_task *ct1 );
     };
 }
 #endif

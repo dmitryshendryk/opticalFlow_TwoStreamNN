@@ -47,6 +47,12 @@ zmq.hpp
 -
 zhelpers.hpp
 -
+vector
+-
+opencv2/core/core.hpp
+-
+opencv2/highgui/highgui.hpp
+../opencv2/highgui/highgui.hpp
 
 /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/build/compute_flow_automoc.cpp
 
@@ -109,12 +115,6 @@ zmq.hpp
 /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/zmq_client.cpp
 zmq_client.hpp
 -
-vector
--
-opencv2/core/core.hpp
--
-opencv2/highgui/highgui.hpp
-/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/opencv2/highgui/highgui.hpp
 
 /home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/zmq_client.hpp
 vector
@@ -129,6 +129,12 @@ zmq.hpp
 -
 zhelpers.hpp
 -
+vector
+-
+opencv2/core/core.hpp
+-
+opencv2/highgui/highgui.hpp
+/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/opt_flow/opencv2/highgui/highgui.hpp
 
 /usr/local/include/opencv/cxcore.h
 opencv2/core/core_c.h

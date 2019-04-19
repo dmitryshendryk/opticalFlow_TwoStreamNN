@@ -82,22 +82,16 @@ class ServerWorker(threading.Thread):
         tprint('Worker started')
         while True:
             ident, msg = worker.recv_multipart()
-            print(type(msg))
-            # str=msg.decode()
-            #print(msg)
-            
-            #s=str(msg,encoding='utf-8')
-            #data_int=int.from_bytes(msg,byteorder='big',signed=False)
             l=[]
             for byte in msg:
                 l.append(byte)
             
             l = np.array(l,dtype=np.uint8)
-            l = l.reshape(640,1240,3)
+            l = l.reshape(640,1240,1)
             
             # print(l.shape)
-            # cv2.imshow("frame", l)
-            # cv2.waitKey(0)
+            cv2.imshow("frame", l)
+            cv2.waitKey(0)
             print('Worker received {} from {}'.format(l, ident))
             replies = randint(0,4)
             for i in range(replies):
