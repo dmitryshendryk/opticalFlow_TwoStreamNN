@@ -34,7 +34,7 @@ from subprocess import Popen, PIPE
 import subprocess
 from threading import Thread
 from queue import Queue, Empty
-from tools.my_zmq import ServerTask
+from tools.server_zmq import ServerTask
 
 
 def enqueue_output(out, queue):
@@ -44,8 +44,8 @@ def enqueue_output(out, queue):
 
 def demo(yolo, vid_path):
 
-    server = ServerTask()
-    server.start()
+    # server = ServerTask()
+    # server.start()
 
     # ON_POSIX = 'posix' in sys.builtin_module_names
    # Definition of the parameters
@@ -153,6 +153,7 @@ def demo(yolo, vid_path):
         # print("Result: {}".format(sub_results))
         # cv2.imshow("Optical flow", fplot.flowToColor(flow, 3.0))
         cv2.imshow('Tracking', frame)
+        cv2.imwrite('/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output_rgb/frame_' + str(count) + '.jpg', frame)
         count += 1
         if writeVideo_flag:
             # save a frame

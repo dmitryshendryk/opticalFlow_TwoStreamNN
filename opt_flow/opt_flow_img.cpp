@@ -24,7 +24,7 @@ void OpticalFlow::convertFlowToImage(const Mat &flowIn, Mat &flowOut,
 
 
 int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frameSkip,
-                              std::string vid_path, std::string out_path, std::string out_path_jpeg, client_task *ct1 )
+                              std::string vid_path, std::string out_path, std::string out_path_jpeg)
 {
     float MIN_SZ = 256;
     float OUT_SZ = 256;
@@ -140,8 +140,8 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
 
         // outfile_u = out_folder_u.toStdString();
         // outfile_v = out_folder_v.toStdString();
-        outfile_u = "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output_x/";
-        outfile_v = "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output_y/";
+        outfile_u = "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output_u/";
+        outfile_v = "/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output_v/";
         // outfile_flow  = out_folder_flow.toStdString();
         // cout << frame1.empty()  << endl;
         while (frame1.empty() == false)
@@ -237,8 +237,8 @@ int OpticalFlow::compute_Flow(int start_with_vid, int gpuID, int type, int frame
                 imwrite(outfile_u + cad, img_u);
                 imwrite(outfile_v + cad, img_v);
 
-                ct1->pImg_V = img_v;
-                ct1->pImg_U = img_u;
+                // ct1->pImg_V = img_v;
+                // ct1->pImg_U = img_u;
                 // *pImg_V = img_v;
                 
                 // std::cout << pImg_V->rows << std::endl;

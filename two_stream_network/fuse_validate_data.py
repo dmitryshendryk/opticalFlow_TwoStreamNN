@@ -124,6 +124,7 @@ class DataSet():
 
             for row in batch_list:
                 # Get the stacked optical flows from disk.
+                print(row)
                 X_spatial, X_temporal = self.get_static_frame_and_stacked_opt_flows(row)
                 
                 # Get the corresponding labels

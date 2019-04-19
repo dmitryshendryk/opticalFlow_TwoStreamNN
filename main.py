@@ -7,6 +7,7 @@ from two_stream_network.temporal_train import train_temporal
 from two_stream_network.spatial_validate import spatial_validate
 from two_stream_network.fuse_validate import fuse_train
 from two_stream_network.temporal_validate import validate_temporal
+from two_stream_network.fuse_predict import fuse_prediction
 
 
 if __name__ == '__main__':
@@ -41,4 +42,7 @@ if __name__ == '__main__':
     
     if args.command == 'train_fuse':
         fuse_train(args.spatial, args.temporal)
+    
+    if args.command == 'predict':
+        fuse_prediction(args.spatial, args.temporal)
 

@@ -80,19 +80,22 @@ class ServerWorker(threading.Thread):
         worker = self.context.socket(zmq.DEALER)
         worker.connect('inproc://backend')
         tprint('Worker started')
+        counter = 1
         while True:
+            counter += 1 
             ident, msg = worker.recv_multipart()
-            l=[]
+            img=[]
             for byte in msg:
-                l.append(byte)
+                img.append(byte)
             
-            l = np.array(l,dtype=np.uint8)
-            l = l.reshape(640,1240,1)
+            img = np.array(img,dtype=np.uint8)
+            img = img.reshape(640,1240,1)
             
             # print(l.shape)
-            cv2.imshow("frame", l)
-            cv2.waitKey(0)
-            print('Worker received {} from {}'.format(l, ident))
+            # cv2.imshow("frame", l)
+            # cv2.waitKey(0)
+            cv2.imwrite("/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/py_res/img_" + str(counter) + '.jpg', img)
+            print('Worker received {} from {}'.format(img, ident))
             replies = randint(0,4)
             for i in range(replies):
                 time.sleep(1. / (randint(1,10)))

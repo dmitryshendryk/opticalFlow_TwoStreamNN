@@ -33,12 +33,14 @@ void client_task::start() {
                 }
             }
             
-            cv::Mat img= imread("/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output_x/frame000001.jpg",1);
+            // cv::Mat img= imread("/home/dmitry/Documents/Projects/opticalFlow_TwoStreamNN/dataset/output_x/frame000001.jpg",1);
             std::cout << "pImg_V  " <<  this->pImg_V.rows << this->pImg_V.cols << this->pImg_V.channels()  << std::endl;
             std::cout << "pImg_U  " << this->pImg_U.rows << this->pImg_U.cols << this->pImg_U.channels()  << std::endl;
-            
+
             
             // client_socket_.send(img.data, img.rows*img.cols*img.channels());
+            std::cout << strlen(reinterpret_cast<char const *>(this->pImg_V.data)) << std::endl;
+            // std::cout << strlen(reinterpret_cast<char const *>(this->pImg_U.data)) << std::endl;
             client_socket_.send(this->pImg_V.data, this->pImg_V.rows*this->pImg_V.cols*this->pImg_V.channels());
         }
     }
